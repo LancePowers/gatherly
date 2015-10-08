@@ -1,0 +1,19 @@
+section {
+    padding: 0px 0;
+}
+
+
+@media(max-width:767px) {
+    section {
+        padding: 20px 0;
+    }
+
+    section.first {
+        padding-top: 20px;
+    }
+}
+
+section h2 {
+    margin: 0;
+    font-size: 2em
+}
