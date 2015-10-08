@@ -97,3 +97,21 @@ describe('Get all users', function () {
         });
     });
 });
+
+describe('Log in via facebook', function () {
+    describe('should be successful', function () {
+        it('in getting profile information', function (done) {
+            chai.request(server)
+                .get('/#/auth/facebook')
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    res.should.be.json;
+                    res.should.be.a('object');
+                    //                    res.body.SUCCESS.should.have.property('name');
+                    //                    res.body.SUCCESS.name.should.equal('tina');
+                    //                    res.body.SUCCESS.age.should.equal(33);
+                    done();
+                });
+        });
+    });
+});

@@ -6,6 +6,10 @@ app.config(function ($routeProvider) {
             templateUrl: 'views/landing-page.html',
             controller: 'landingPageController'
         })
+        .when('/profile', {
+            templateUrl: 'views/profile.html',
+            controller: 'profileController'
+        })
 
     //        .otherwise({
     //            templateUrl: 'views/home.html',

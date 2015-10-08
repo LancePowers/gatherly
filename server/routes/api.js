@@ -20,6 +20,7 @@ router.get('/user', function (req, res, next) {
 });
 router.post('/user', function (req, res, next) {
 
+
     var newUser = new User({
         name: req.body.name,
         email: req.body.email,
@@ -27,15 +28,16 @@ router.post('/user', function (req, res, next) {
         answers: req.body.answers,
         image: req.body.image
     });
-    //    console.log('here');
     newUser.saveQ()
         .then(function (result) {
+
             res.json({
                 "SUCCESS": result[0]
             });
         })
         .catch(function (err) {
             res.send(err)
+
         })
         .done();
 });

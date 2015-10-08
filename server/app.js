@@ -12,6 +12,7 @@ var config = require('../_config.js');
 // *** routes *** //
 var routes = require('./routes/index.js');
 var apiRoutes = require('./routes/api.js');
+var authRoutes = require('./routes/auth-routes.js');
 
 
 // *** express instance *** //
@@ -33,12 +34,14 @@ app.use(express.static(path.join(__dirname, '../client')));
 
 
 // *** main routes *** //
-app.use('/', function (req, res) {
-    res.sendFile(path.join(__dirname, '../client/', 'index.html'));
-});
 
 //app.use('/', routes);
+app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
+app.use('/', function (req, res) {
+    console.log('wrong way')
+    res.sendFile(path.join(__dirname, '../client/', 'index.html'));
+});
 
 // *** mongoose *** ///
 mongoose.connect(config.mongoURI[app.settings.env], function (err, res) {
