@@ -6,7 +6,8 @@ var Gatherer = require('../models/gatherer');
 
 
 router.get('/', function (req, res, next) {
-    res.render('../views/test.html');
+    res.send('hello');
+    res.render('../../client/views/landing-page.html');
 });
 
 module.exports = router;

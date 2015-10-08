@@ -76,6 +76,8 @@ describe('Post a new user', function () {
     });
 });
 
+
+//Not sure get all will be
 describe('Get all users', function () {
     describe('should be successful', function () {
         it('in getting all users from the database', function (done) {

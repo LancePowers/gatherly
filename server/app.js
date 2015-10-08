@@ -5,7 +5,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var swig = require('swig');
 var mongoose = require('mongoose');
 var config = require('../_config.js');
 
@@ -17,12 +16,6 @@ var apiRoutes = require('./routes/api.js');
 
 // *** express instance *** //
 var app = express();
-
-
-// *** view engine *** //
-var swig = new swig.Swig();
-app.engine('html', swig.renderFile);
-app.set('view engine', 'html');
 
 
 // *** static directory *** //
@@ -40,7 +33,11 @@ app.use(express.static(path.join(__dirname, '../client')));
 
 
 // *** main routes *** //
-app.use('/', routes);
+app.use('/', function (req, res) {
+    res.sendFile(path.join(__dirname, '../client/', 'index.html'));
+});
+
+//app.use('/', routes);
 app.use('/api', apiRoutes);
 
 // *** mongoose *** ///
