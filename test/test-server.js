@@ -4,7 +4,16 @@ var chaiHttp = require('chai-http');
 var server = require('../server/app');
 var expect = chai.expect;
 var should = chai.should();
-var User = require('../server/models/user.js').User;
+var db = require('../server/models/user.js')
+var User = db.User;
+var Gather = db.Gather;
+var Experience = db.Experience;
+var Mee = db.Mee;
+var Image = db.Image;
+var Connection = db.Connection;
+var Relationship = db.Relationship;
+var Character = db.Character;
+var Role = db.Role;
 chai.use(chaiHttp);
 
 // TEST TEMPLATE
@@ -79,3 +88,57 @@ describe('Log in', function () {
         });
     });
 });
+
+
+
+describe('Serve an experience', function () {
+    describe('should be successful', function () {
+        it('in creating an experience', function (done) {
+            var id;
+            chai.request(server)
+                .post('/data/experience')
+                .send({
+                    'name': 'Platte Patio Sunrise Surprise',
+                    'description': 'Have a cup of joe, take in the views for a bit, and see the largest concentration of hipsters with macbooks in all of Denver',
+                    'edds': 'Drink',
+                    'images': ['patio.img', 'skyline.png', 'homelessGuyTakingAPiss.jpg'],
+                })
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    res.should.be.json;
+                    res.should.be.a('object');
+                    res.body[0].should.have.property('name');
+                    res.body[0].name.should.equal('Platte Patio Sunrise Surprise');
+                    res.body[0].name.length.should.be.below(30);
+                    res.body[0].should.have.property('description');
+                    res.body[0].description.should.equal('Have a cup of joe, take in the views for a bit, and see the largest concentration of hipsters with macbooks in all of Denver');
+                    res.body[0].description.length.should.be.below(140);
+                    res.body[0].should.have.property('edds');
+                    id = res.body._id;
+                    done();
+                });
+        });
+
+
+        it('in retrieving an experience', function (done) {
+            chai.request(server)
+                .get('/data/experience')
+                .send({
+                    id: '561ae6695c48686b27889217'
+                })
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    res.should.be.json;
+                    res.should.be.a('object');
+
+                    done();
+                });
+        });
+        // in updating an experience
+        // in deleting an experience
+    });
+});
+
+//describe serve a character set
+//describe serve a gather
+//describe serve a

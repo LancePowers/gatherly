@@ -42,7 +42,7 @@ app.use(flash());
 
 
 app.use('/auth', authRoutes);
-app.use('/dataAPI', dataRoutes);
+app.use('/data', dataRoutes);
 app.use('/', function (req, res) {
     console.log('main');
     res.sendFile(path.join(__dirname, '../client', 'index.html'));

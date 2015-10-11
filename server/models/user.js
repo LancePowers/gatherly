@@ -8,8 +8,7 @@ var User = new Schema({
     first: String,
     last: String,
     username: String,
-    email: String,
-    image: String
+    email: String
 })
 
 
@@ -21,13 +20,11 @@ var Experience = new Schema({
     name: String,
     description: String,
     edds: String,
+    ownerID: String
 })
 
 var Mee = new Schema({
-    world: String,
-    information: String,
-    decision: String,
-    structure: String,
+    MBTID: String,
     experienceID: String,
     gatherID: String,
     userID: String,
@@ -35,30 +32,36 @@ var Mee = new Schema({
     connectionID: String,
     roleID: String
 })
+var MBT = new Schema({
+    world: String,
+    information: String,
+    decision: String,
+    structure: String,
+})
 
 var Image = new Schema({
-    gatherID: String,
     experienceID: String,
     userID: String,
     image: String
 })
 
-var Connection = new Schema({
-    relationshipID: String,
-    rating: Number,
-    blocked: Boolean,
-    family: Boolean
-})
-
-var Relationship = new Schema({
-    sourceID: String,
-    subjectID: String,
-    status: String
-})
+//var Connection = new Schema({
+//    relationshipID: String,
+//    rating: Number,
+//    blocked: Boolean,
+//    family: Boolean
+//})
+//
+//var Relationship = new Schema({
+//    sourceID: String,
+//    subjectID: String,
+//    status: String
+//})
 
 var Character = new Schema({
     image: String,
-    group: String
+    group: String,
+    MBTID: String
 })
 
 var Role = new Schema({
@@ -74,8 +77,8 @@ module.exports = {
     Experience: mongoose.model('experiences', Experience),
     Mee: mongoose.model('mees', Mee),
     Image: mongoose.model('images', Image),
-    Connection: mongoose.model('connections', Connection),
-    Relationship: mongoose.model('relationships', Relationship),
+    //    Connection: mongoose.model('connections', Connection),
+    //    Relationship: mongoose.model('relationships', Relationship),
     Character: mongoose.model('characters', Character),
     Role: mongoose.model('roles', Role),
 }
