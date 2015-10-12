@@ -14,11 +14,11 @@ app.config(function ($routeProvider) {
             templateUrl: 'views/gather.html',
             controller: 'gatherController'
         })
-        .when('/experience', {
+        .when('/experience/:id', {
             templateUrl: 'views/experience.html',
             controller: 'experienceController'
         })
-        .when('/experience/form', {
+        .when('/new/experience', {
             templateUrl: 'views/experience-form.html',
             controller: 'experienceFormController'
         })

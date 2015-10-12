@@ -12,35 +12,32 @@ app.controller('experienceFormController', function ($scope, httpFactory, $locat
         httpFactory.post('data/experience', payload)
             .then(function (response) {
                 console.log(response)
+                $location.path('/experience/' + response.data[0]._id);
 
             });
     };
 });
 
 
-app.controller('experienceController', function ($scope, httpFactory, $location) {
-    console.log($location.path());
-    var id = "561bf7a252f7dbf24ced2c22";
-    var experienceUrl = "data/experience/" + id;
+app.controller('experienceController', function ($scope, httpFactory, $location, $routeParams) {
+
+    $scope.id = $routeParams.id;
+    var experienceUrl = "data/experience/" + $scope.id;
     //1. Get Experience Function, using route
-    $scope.getExperience = function (id) {
+    $scope.getExperience = function () {
         httpFactory.get(experienceUrl)
             .then(function (response) {
-                //                console.log(response);
                 $scope.name = response.data.name;
                 $scope.edds = response.data.edds;
                 $scope.description = response.data.description;
-                $scope.image = httpFactory.get(imageUrl)
-                    .then(function (response) {
-                        $scope.image = response.data[0].image;
-                        //                    console.log($scope.image);
-                    })
             })
     };
     $scope.getExperience('data/experience');
-    var imageUrl = "data/image/" + id
+
+    console.log($scope.id)
+    var imageUrl = "data/image/" + $scope.id
         //1. Get Experience Function, using route
-    $scope.getImage = function (id) {
+    $scope.getImage = function () {
         httpFactory.get(imageUrl)
             .then(function (response) {
                 console.log(response);
