@@ -23,8 +23,9 @@ router.post('/experience', function (req, res, err) {
         .done();
 })
 
-router.get('/experience', function (req, res, err) {
-    db.Experience.findByIdQ(req.body.id)
+router.get('/experience/:id', function (req, res, err) {
+    console.log(req.body.id)
+    db.Experience.findByIdQ(req.params.id)
         .then(function (result) {
             res.json(result);
         })

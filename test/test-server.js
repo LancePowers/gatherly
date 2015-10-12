@@ -122,10 +122,10 @@ describe('Serve an experience', function () {
 
         it('in retrieving an experience', function (done) {
             chai.request(server)
-                .get('/data/experience')
-                .send({
-                    id: '561ae6695c48686b27889217'
-                })
+                .get('/data/experience/561ae6695c48686b27889217')
+                //                .send({
+                //                    id: '561ae6695c48686b27889217'
+                //                })
                 .end(function (err, res) {
                     console.log(res.body);
                     res.should.have.status(200);
@@ -135,8 +135,23 @@ describe('Serve an experience', function () {
                     done();
                 });
         });
-        // in updating an experience
-        // in deleting an experience
+
+
+        it('in retrieving images for an experience', function (done) {
+            chai.request(server)
+                .get('/data/image')
+                .send({
+                    id: '561ae6695c48686b27889217'
+                })
+                .end(function (err, res) {
+                    console.log(res.body)
+                    res.should.have.status(200);
+                    res.should.be.json;
+                    res.body.should.be.a('array');
+                    res.body[0]._id.should.equal('561ae6695c48686b2788921a');
+                    done();
+                });
+        });
     });
 });
 
