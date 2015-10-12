@@ -127,10 +127,11 @@ describe('Serve an experience', function () {
                     id: '561ae6695c48686b27889217'
                 })
                 .end(function (err, res) {
+                    console.log(res.body);
                     res.should.have.status(200);
                     res.should.be.json;
                     res.should.be.a('object');
-
+                    res.body.name.should.equal('Platte Patio Sunrise Surprise');
                     done();
                 });
         });

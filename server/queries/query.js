@@ -29,7 +29,7 @@ function getImages(id, res) {
             experienceID: id
         })
         .then(function (result) {
-            console.log(result);
+            return result;
         })
         .catch(function (err) {
             console.log(err);

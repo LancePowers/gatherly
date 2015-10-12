@@ -26,17 +26,7 @@ router.post('/experience', function (req, res, err) {
 router.get('/experience', function (req, res, err) {
     db.Experience.findByIdQ(req.body.id)
         .then(function (result) {
-            db.Image.findQ({
-                    experienceID: req.body.id
-                })
-                .then(function (result) {
-                    console.log(result);
-                })
-                .catch(function (err) {
-                    console.log(err);
-                })
-                .done();
-            console.log(result)
+            res.json(result);
         })
         .catch(function (err) {
             console.log(err);
@@ -44,4 +34,17 @@ router.get('/experience', function (req, res, err) {
         })
         .done();
 });
+
+router.get('/image', function (req, res, err) {
+    db.Image.findQ({
+            experienceID: req.body.id
+        })
+        .then(function (result) {
+            res.json(result);
+        })
+        .catch(function (err) {
+            res.json(err);
+        })
+        .done();
+})
 module.exports = router
