@@ -8,12 +8,14 @@ var query = require('../queries/query.js')
 // *** Serve an Experience *** //
 
 router.post('/experience', function (req, res, err) {
+    console.log(req.body);
     new db.Experience({
             name: req.body.name,
             description: req.body.description,
             edds: req.body.edds
         }).saveQ()
         .then(function (result) {
+            console.log(req.body.images)
             query.saveImages(result[0]._id, req.body.images);
             res.json(result);
         })
@@ -36,9 +38,9 @@ router.get('/experience/:id', function (req, res, err) {
         .done();
 });
 
-router.get('/image', function (req, res, err) {
+router.get('/image/:id', function (req, res, err) {
     db.Image.findQ({
-            experienceID: req.body.id
+            experienceID: req.params.id
         })
         .then(function (result) {
             res.json(result);

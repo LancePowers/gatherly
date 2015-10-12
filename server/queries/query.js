@@ -7,7 +7,7 @@ var router = express.Router();
 
 
 function saveImages(id, images) {
-
+    console.log(images);
     for (var i = 0; i < images.length; i++) {
         new db.Image({
                 experienceID: id,

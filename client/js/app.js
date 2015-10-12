@@ -32,14 +32,14 @@ app.config(function ($routeProvider) {
         })
         .otherwise({
             templateUrl: 'views/landing-page.html',
-            controller: 'landingPageController'
+            controller: 'landingController'
         })
 })
 
-myApp.run(function ($rootScope, $location, $route, AuthService) {
-    $rootScope.on('$routeChangeStart', function (event, next, current) {
-        if (next.access.restricted && !AuthService.getUserStatus()) {
-            $location.path('/login');
-        }
-    });
-});
+//app.run(function ($rootScope, $location, $route, AuthService) {
+//    $rootScope.on('$routeChangeStart', function (event, next, current) {
+//        if (next.access.restricted && !AuthService.getUserStatus()) {
+//            $location.path('/login');
+//        }
+//    });
+//});

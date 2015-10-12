@@ -139,10 +139,10 @@ describe('Serve an experience', function () {
 
         it('in retrieving images for an experience', function (done) {
             chai.request(server)
-                .get('/data/image')
-                .send({
-                    id: '561ae6695c48686b27889217'
-                })
+                .get('/data/image/561ae6695c48686b27889217')
+//                .send({
+            //                    id: '561ae6695c48686b27889217'
+            //                })
                 .end(function (err, res) {
                     console.log(res.body)
                     res.should.have.status(200);
