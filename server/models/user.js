@@ -45,20 +45,9 @@ var Image = new Schema({
     image: String
 })
 
-//var Connection = new Schema({
-//    relationshipID: String,
-//    rating: Number,
-//    blocked: Boolean,
-//    family: Boolean
-//})
-//
-//var Relationship = new Schema({
-//    sourceID: String,
-//    subjectID: String,
-//    status: String
-//})
 
 var Character = new Schema({
+    name: String,
     image: String,
     group: String,
     MBTID: String
@@ -72,13 +61,26 @@ var Role = new Schema({
 User.plugin(passportLocalMongoose);
 
 module.exports = {
-    User: mongoose.model('users', User),
-    Gather: mongoose.model('gathers', Gather),
-    Experience: mongoose.model('experiences', Experience),
-    Mee: mongoose.model('mees', Mee),
-    Image: mongoose.model('images', Image),
-    //    Connection: mongoose.model('connections', Connection),
-    //    Relationship: mongoose.model('relationships', Relationship),
-    Character: mongoose.model('characters', Character),
-    Role: mongoose.model('roles', Role),
-}
+        User: mongoose.model('users', User),
+        Gather: mongoose.model('gathers', Gather),
+        Experience: mongoose.model('experiences', Experience),
+        Mee: mongoose.model('mees', Mee),
+        Image: mongoose.model('images', Image),
+        //    Connection: mongoose.model('connections', Connection),
+        //    Relationship: mongoose.model('relationships', Relationship),
+        Character: mongoose.model('characters', Character),
+        Role: mongoose.model('roles', Role),
+        MBT: mongoose.model('MBTs', MBT)
+    }
+    //var Connection = new Schema({
+    //    relationshipID: String,
+    //    rating: Number,
+    //    blocked: Boolean,
+    //    family: Boolean
+    //})
+    //
+    //var Relationship = new Schema({
+    //    sourceID: String,
+    //    subjectID: String,
+    //    status: String
+    //})

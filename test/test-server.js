@@ -123,11 +123,7 @@ describe('Serve an experience', function () {
         it('in retrieving an experience', function (done) {
             chai.request(server)
                 .get('/data/experience/561ae6695c48686b27889217')
-                //                .send({
-                //                    id: '561ae6695c48686b27889217'
-                //                })
                 .end(function (err, res) {
-                    console.log(res.body);
                     res.should.have.status(200);
                     res.should.be.json;
                     res.should.be.a('object');
@@ -140,11 +136,7 @@ describe('Serve an experience', function () {
         it('in retrieving images for an experience', function (done) {
             chai.request(server)
                 .get('/data/image/561ae6695c48686b27889217')
-//                .send({
-            //                    id: '561ae6695c48686b27889217'
-            //                })
                 .end(function (err, res) {
-                    console.log(res.body)
                     res.should.have.status(200);
                     res.should.be.json;
                     res.body.should.be.a('array');
@@ -152,9 +144,101 @@ describe('Serve an experience', function () {
                     done();
                 });
         });
+
+
+        it('in retrieving all experiences', function (done) {
+            chai.request(server)
+                .get('/data/experiences')
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    res.should.be.json;
+                    res.body.should.be.a('array');
+                    console.log(res.body);
+                    done();
+                });
+        });
     });
 });
 
-//describe serve a character set
-//describe serve a gather
+
+// *** Character Testing *** //
+
+
+describe('Character management', function () {
+    describe('should be successful', function () {
+
+
+        it('in adding a character', function (done) {
+            chai.request(server)
+                .post('/data/character')
+                .send({
+                    'name': 'Harry Potter',
+                    'image': 'http://cdn.playbuzz.com/cdn/8de88741-d729-4319-aa46-e8a544a20439/f7cade9d-8daf-42b3-8839-3e0e1f3db283.jpeg',
+                    'group': 'Harry Potter',
+                    'MBT': ['i', 's', 'f', 'p']
+                })
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    res.should.be.json;
+                    res.should.be.a('object');
+                    //                    console.log(res.body)
+                    res.body[0].should.have.property('name');
+                    res.body[0].name.should.equal('Harry Potter');
+                    res.body[0].image.should.equal('http://cdn.playbuzz.com/cdn/8de88741-d729-4319-aa46-e8a544a20439/f7cade9d-8daf-42b3-8839-3e0e1f3db283.jpeg');
+                    res.body[0].group.should.equal('Harry Potter');
+                    res.body[0].should.have.property('MBTID');
+                    res.body[0].MBTID.should.be.a('string');
+                    done();
+                });
+        });
+
+
+        //        it('in getting a character', function (done) {
+        //            chai.request(server)
+        //                .get('/data/character:')
+        //                .send({
+        //                    'name': 'Harry Potter',
+        //                    'image': 'http://cdn.playbuzz.com/cdn/8de88741-d729-4319-aa46-e8a544a20439/f7cade9d-8daf-42b3-8839-3e0e1f3db283.jpeg',
+        //                    'group': 'Harry Potter',
+        //                    'MBT': ['i', 's', 'f', 'p']
+        //                })
+        //                .end(function (err, res) {
+        //                    res.should.have.status(200);
+        //                    res.should.be.json;
+        //                    res.should.be.a('object');
+        //                    //                    console.log(res.body)
+        //                    res.body[0].should.have.property('name');
+        //                    res.body[0].name.should.equal('Harry Potter');
+        //                    res.body[0].image.should.equal('http://cdn.playbuzz.com/cdn/8de88741-d729-4319-aa46-e8a544a20439/f7cade9d-8daf-42b3-8839-3e0e1f3db283.jpeg');
+        //                    res.body[0].group.should.equal('Harry Potter');
+        //                    res.body[0].should.have.property('MBTID');
+        //                    res.body[0].MBTID.should.be.a('string');
+        //                    done();
+        //                });
+        //        });
+    });
+});
+
+
+//describe('Post a gather', function () {
+//    describe('should be successful', function () {
+//        it('in creating a new gather', function (done) {
+//            chai.request(server)
+//                .post('/data/gather')
+//                .send({
+//                    'name': 'patrick',
+//                    'age': '33'
+//                })
+//                .end(function (err, res) {
+//                    res.should.have.status(200);
+//                    res.should.be.json;
+//                    res.should.be.a('object');
+//                    res.body.SUCCESS.should.have.property('name');
+//                    res.body.SUCCESS.name.should.equal('tina');
+//                    res.body.SUCCESS.age.should.equal(33);
+//                    done();
+//                });
+//        });
+//    });
+//});
 //describe serve a

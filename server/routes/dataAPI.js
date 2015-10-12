@@ -5,17 +5,16 @@ var db = require('../models/user.js');
 var query = require('../queries/query.js')
 
 
-// *** Serve an Experience *** //
+// *** EXPERIENCE *** //
 
 router.post('/experience', function (req, res, err) {
-    console.log(req.body);
+    console.log('experience');
     new db.Experience({
             name: req.body.name,
             description: req.body.description,
             edds: req.body.edds
         }).saveQ()
         .then(function (result) {
-            console.log(req.body.images)
             query.saveImages(result[0]._id, req.body.images);
             res.json(result);
         })
@@ -25,8 +24,22 @@ router.post('/experience', function (req, res, err) {
         .done();
 })
 
+router.get('/experiences', function (req, res, err) {
+    console.log('get experience')
+    db.Experience.findQ()
+        .then(function (result) {
+            res.json(result);
+        })
+        .catch(function (err) {
+            console.log(err);
+            res.json(err);
+        })
+        .done();
+});
+
+
 router.get('/experience/:id', function (req, res, err) {
-    console.log(req.body.id)
+    console.log('get experience')
     db.Experience.findByIdQ(req.params.id)
         .then(function (result) {
             res.json(result);
@@ -37,6 +50,8 @@ router.get('/experience/:id', function (req, res, err) {
         })
         .done();
 });
+
+// *** IMAGE *** //
 
 router.get('/image/:id', function (req, res, err) {
     db.Image.findQ({
@@ -50,4 +65,59 @@ router.get('/image/:id', function (req, res, err) {
         })
         .done();
 })
+
+
+// *** CHARACTER *** //
+
+
+router.post('/character', function (req, res, err) {
+    new db.MBT({
+            world: req.body.MBT[0],
+            information: req.body.MBT[1],
+            decision: req.body.MBT[2],
+            structure: req.body.MBT[3],
+        }).saveQ()
+        .then(function (result) {
+            console.log(result);
+            new db.Character({
+                    name: req.body.name,
+                    image: req.body.image,
+                    group: req.body.group,
+                    MBTID: result[0]._id
+                }).saveQ()
+                .then(function (result) {
+                    res.json(result)
+                })
+                .catch(function (err) {
+                    res.json(err);
+                })
+                .done();
+        })
+        .catch(function (err) {
+            console.log(err);
+        })
+        .then(function (result) {
+            //console.log(result)
+        });
+})
+
+
+// *** GATHER *** //
+router.post('/gather', function (req, res, err) {
+    console.log('gather');
+    new db.Gather({
+            name: req.body.name,
+            description: req.body.description,
+            edds: req.body.edds
+        }).saveQ()
+        .then(function (result) {
+            query.saveImages(result[0]._id, req.body.images);
+            res.json(result);
+        })
+        .catch(function (err) {
+            res.json(err);
+        })
+        .done();
+})
+
 module.exports = router
