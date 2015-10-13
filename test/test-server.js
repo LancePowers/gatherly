@@ -175,7 +175,10 @@ describe('Character management', function () {
                     'name': 'Harry Potter',
                     'image': 'http://cdn.playbuzz.com/cdn/8de88741-d729-4319-aa46-e8a544a20439/f7cade9d-8daf-42b3-8839-3e0e1f3db283.jpeg',
                     'group': 'Harry Potter',
-                    'MBT': ['i', 's', 'f', 'p']
+                    'world': 'i',
+                    'information': 's',
+                    'decision': 't',
+                    'structure': 'p'
                 })
                 .end(function (err, res) {
                     res.should.have.status(200);
@@ -186,8 +189,8 @@ describe('Character management', function () {
                     res.body[0].name.should.equal('Harry Potter');
                     res.body[0].image.should.equal('http://cdn.playbuzz.com/cdn/8de88741-d729-4319-aa46-e8a544a20439/f7cade9d-8daf-42b3-8839-3e0e1f3db283.jpeg');
                     res.body[0].group.should.equal('Harry Potter');
-                    res.body[0].should.have.property('MBTID');
-                    res.body[0].MBTID.should.be.a('string');
+                    res.body[0].should.have.property('world');
+                    res.body[0].world.should.equal('i');
                     done();
                 });
         });

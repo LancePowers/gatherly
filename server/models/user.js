@@ -13,30 +13,29 @@ var User = new Schema({
 
 
 var Gather = new Schema({
-    date: Date
+    //
+    experienceID1: String,
+    experienceID2: String,
+    experienceID3: String
+        // role ids
+        //Mee id
+
 })
+
 
 var Experience = new Schema({
     name: String,
     description: String,
     edds: String,
-    ownerID: String
+    ownerID: String,
 })
 
-var Mee = new Schema({
-    MBTID: String,
-    experienceID: String,
+var Role = new Schema({
     gatherID: String,
     userID: String,
-    characterID: String,
-    connectionID: String,
-    roleID: String
-})
-var MBT = new Schema({
-    world: String,
-    information: String,
-    decision: String,
-    structure: String,
+    name: String,
+    rating: String,
+    characterID: String
 })
 
 var Image = new Schema({
@@ -50,37 +49,19 @@ var Character = new Schema({
     name: String,
     image: String,
     group: String,
-    MBTID: String
-})
-
-var Role = new Schema({
-    name: String,
-    description: String
+    world: String,
+    information: String,
+    decision: String,
+    structure: String
 })
 
 User.plugin(passportLocalMongoose);
 
 module.exports = {
-        User: mongoose.model('users', User),
-        Gather: mongoose.model('gathers', Gather),
-        Experience: mongoose.model('experiences', Experience),
-        Mee: mongoose.model('mees', Mee),
-        Image: mongoose.model('images', Image),
-        //    Connection: mongoose.model('connections', Connection),
-        //    Relationship: mongoose.model('relationships', Relationship),
-        Character: mongoose.model('characters', Character),
-        Role: mongoose.model('roles', Role),
-        MBT: mongoose.model('MBTs', MBT)
-    }
-    //var Connection = new Schema({
-    //    relationshipID: String,
-    //    rating: Number,
-    //    blocked: Boolean,
-    //    family: Boolean
-    //})
-    //
-    //var Relationship = new Schema({
-    //    sourceID: String,
-    //    subjectID: String,
-    //    status: String
-    //})
+    User: mongoose.model('users', User),
+    Gather: mongoose.model('gathers', Gather),
+    Experience: mongoose.model('experiences', Experience),
+    Image: mongoose.model('images', Image),
+    Character: mongoose.model('characters', Character),
+    Role: mongoose.model('roles', Role)
+}

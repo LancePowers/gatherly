@@ -71,35 +71,25 @@ router.get('/image/:id', function (req, res, err) {
 
 
 router.post('/character', function (req, res, err) {
-    new db.MBT({
-            world: req.body.MBT[0],
-            information: req.body.MBT[1],
-            decision: req.body.MBT[2],
-            structure: req.body.MBT[3],
+
+    new db.Character({
+            name: req.body.name,
+            image: req.body.image,
+            group: req.body.group,
+            world: req.body.world,
+            information: req.body.information,
+            decision: req.body.decision,
+            structure: req.body.structure
         }).saveQ()
         .then(function (result) {
-            console.log(result);
-            new db.Character({
-                    name: req.body.name,
-                    image: req.body.image,
-                    group: req.body.group,
-                    MBTID: result[0]._id
-                }).saveQ()
-                .then(function (result) {
-                    res.json(result)
-                })
-                .catch(function (err) {
-                    res.json(err);
-                })
-                .done();
+            res.json(result)
         })
         .catch(function (err) {
-            console.log(err);
+            res.json(err);
         })
-        .then(function (result) {
-            //console.log(result)
-        });
-})
+        .done();
+});
+
 
 
 // *** GATHER *** //

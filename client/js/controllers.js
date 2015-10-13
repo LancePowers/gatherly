@@ -40,12 +40,73 @@ app.controller('experienceController', function ($scope, httpFactory, $location,
     $scope.getImage = function () {
         httpFactory.get(imageUrl)
             .then(function (response) {
-                console.log(response);
                 $scope.image = response.data[0].image;
             });
     };
     $scope.getImage('data/image');
 });
+
+
+app.controller('gatherFormController', function ($scope, httpFactory, $location) {
+    $scope.prompt = '#1'
+    $scope.myInterval = 5000;
+    $scope.noWrapSlides = false;
+    $scope.names = [];
+    $scope.edds = [];
+    $scope.images = [];
+    $scope.ids = [];
+    $scope.slides = [];
+    $scope.debug = function () {
+        debugger
+    };
+    $scope.index = 0;
+
+    $scope.experiences = [];
+    $scope.addExperience = function () {
+        console.log($scope.getActiveSlide().id)
+        $scope.experiences.push($scope.getActiveSlide());
+    }
+    $scope.getActiveSlide = function () {
+        return $scope.slides.filter(function (s) {
+            return s.active;
+        })[0];
+    };
+    $scope.getImage = function (imageUrl) {
+        httpFactory.get(imageUrl)
+            .then(function (response) {
+                if (response.data[0].image.length > 10) {
+                    $scope.images.push(response.data[0].image);
+                    $scope.createSlides();
+                }
+                console.log($scope.slides)
+            })
+    };
+
+    $scope.addSlide = function () {
+        httpFactory.get('data/experiences')
+            .then(function (response) {
+                for (var i = 0; i < response.data.length; i++) {
+                    console.log(response.data[0]._id)
+                    $scope.names.push(response.data[i].name);
+                    $scope.edds.push(response.data[i].edds);
+                    $scope.ids.push(response.data[i]._id);
+                    $scope.getImage('data/image/' + response.data[i]._id)
+                }
+            })
+    };
+    $scope.createSlides = function () {
+        var slide = {
+            image: $scope.images[$scope.index],
+            name: $scope.names[$scope.index],
+            edds: $scope.edds[$scope.index],
+            id: $scope.ids[$scope.index],
+        }
+        $scope.slides.push(slide);
+        $scope.index++;
+    }
+    $scope.addSlide();
+});
+
 
 app.controller('gatherController', function ($scope) {
     $scope.eImage1 = "that";

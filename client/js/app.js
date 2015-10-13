@@ -1,4 +1,4 @@
-var app = angular.module('gatherly', ['ngRoute']);
+var app = angular.module('gatherly', ['ngRoute', 'ngAnimate', 'ui.bootstrap']);
 
 app.config(function ($routeProvider) {
     $routeProvider
@@ -13,6 +13,10 @@ app.config(function ($routeProvider) {
         .when('/gather', {
             templateUrl: 'views/gather.html',
             controller: 'gatherController'
+        })
+        .when('/new/gather', {
+            templateUrl: 'views/gather-form.html',
+            controller: 'gatherFormController'
         })
         .when('/experience/:id', {
             templateUrl: 'views/experience.html',
