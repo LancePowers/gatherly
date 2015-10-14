@@ -11,7 +11,6 @@ app.controller('experienceFormController', function ($scope, httpFactory, $locat
         //        console.log(payload);
         httpFactory.post('data/experience', payload)
             .then(function (response) {
-                console.log(response)
                 $location.path('/experience/' + response.data[0]._id);
 
             });
@@ -34,7 +33,6 @@ app.controller('experienceController', function ($scope, httpFactory, $location,
     };
     $scope.getExperience('data/experience');
 
-    console.log($scope.id)
     var imageUrl = "data/image/" + $scope.id
         //1. Get Experience Function, using route
     $scope.getImage = function () {
@@ -86,7 +84,6 @@ app.controller('gatherFormController', function ($scope, httpFactory, $location)
         httpFactory.get('data/experiences')
             .then(function (response) {
                 for (var i = 0; i < response.data.length; i++) {
-                    console.log(response.data[0]._id)
                     $scope.names.push(response.data[i].name);
                     $scope.edds.push(response.data[i].edds);
                     $scope.ids.push(response.data[i]._id);

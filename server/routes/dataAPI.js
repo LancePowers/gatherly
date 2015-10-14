@@ -39,7 +39,7 @@ router.get('/experiences', function (req, res, err) {
 
 
 router.get('/experience/:id', function (req, res, err) {
-    console.log('get experience')
+    console.log('get experience by id')
     db.Experience.findByIdQ(req.params.id)
         .then(function (result) {
             res.json(result);
@@ -69,22 +69,45 @@ router.get('/image/:id', function (req, res, err) {
 
 // *** CHARACTER *** //
 
-
-router.post('/character', function (req, res, err) {
-
-    new db.Character({
-            name: req.body.name,
-            image: req.body.image,
-            group: req.body.group,
-            world: req.body.world,
-            information: req.body.information,
-            decision: req.body.decision,
-            structure: req.body.structure
-        }).saveQ()
+router.get('/character/:id', function (req, res, err) {
+    db.Character.find({
+            group: req.params.id
+        })
         .then(function (result) {
-            res.json(result)
+            res.json(result);
         })
         .catch(function (err) {
+            res.json(err);
+        })
+        .done();
+})
+
+
+router.post('/character', function (req, res, err) {
+    db.Character.findOne({
+            image: req.body.image
+        }).then(function (result) {
+            if (result) {
+                res.json(result);
+            } else {
+                new db.Character({
+                        name: req.body.name,
+                        image: req.body.image,
+                        group: req.body.group,
+                        world: req.body.world,
+                        information: req.body.information,
+                        decision: req.body.decision,
+                        structure: req.body.structure
+                    }).saveQ()
+                    .then(function (result) {
+                        res.json(result)
+                    })
+                    .catch(function (err) {
+                        res.json(err);
+                    })
+                    .done();
+            }
+        }).catch(function (err) {
             res.json(err);
         })
         .done();

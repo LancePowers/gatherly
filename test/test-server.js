@@ -93,8 +93,10 @@ describe('Log in', function () {
 
 describe('Serve an experience', function () {
     describe('should be successful', function () {
+        Experience.collection.drop();
+        Image.collection.drop();
+        var id = 0;
         it('in creating an experience', function (done) {
-            var id;
             chai.request(server)
                 .post('/data/experience')
                 .send({
@@ -114,15 +116,17 @@ describe('Serve an experience', function () {
                     res.body[0].description.should.equal('Have a cup of joe, take in the views for a bit, and see the largest concentration of hipsters with macbooks in all of Denver');
                     res.body[0].description.length.should.be.below(140);
                     res.body[0].should.have.property('edds');
-                    id = res.body._id;
+                    id = res.body[0]._id;
                     done();
                 });
         });
 
 
+
         it('in retrieving an experience', function (done) {
+            console.log(id);
             chai.request(server)
-                .get('/data/experience/561ae6695c48686b27889217')
+                .get('/data/experience/' + id)
                 .end(function (err, res) {
                     res.should.have.status(200);
                     res.should.be.json;
@@ -135,12 +139,12 @@ describe('Serve an experience', function () {
 
         it('in retrieving images for an experience', function (done) {
             chai.request(server)
-                .get('/data/image/561ae6695c48686b27889217')
+                .get('/data/image/' + id)
                 .end(function (err, res) {
                     res.should.have.status(200);
                     res.should.be.json;
                     res.body.should.be.a('array');
-                    res.body[0]._id.should.equal('561ae6695c48686b2788921a');
+                    res.body[0].image.should.equal('patio.img');
                     done();
                 });
         });
@@ -153,7 +157,6 @@ describe('Serve an experience', function () {
                     res.should.have.status(200);
                     res.should.be.json;
                     res.body.should.be.a('array');
-                    console.log(res.body);
                     done();
                 });
         });
@@ -166,8 +169,8 @@ describe('Serve an experience', function () {
 
 describe('Character management', function () {
     describe('should be successful', function () {
-
-
+        Character.collection.drop();
+        var id = 0;
         it('in adding a character', function (done) {
             chai.request(server)
                 .post('/data/character')
@@ -184,41 +187,50 @@ describe('Character management', function () {
                     res.should.have.status(200);
                     res.should.be.json;
                     res.should.be.a('object');
-                    //                    console.log(res.body)
+                    console.log(res.body)
                     res.body[0].should.have.property('name');
                     res.body[0].name.should.equal('Harry Potter');
                     res.body[0].image.should.equal('http://cdn.playbuzz.com/cdn/8de88741-d729-4319-aa46-e8a544a20439/f7cade9d-8daf-42b3-8839-3e0e1f3db283.jpeg');
                     res.body[0].group.should.equal('Harry Potter');
                     res.body[0].should.have.property('world');
                     res.body[0].world.should.equal('i');
+                    id = res.body[0]._id;
+                    done();
+                });
+        });
+        it('in not saving the same character twice', function (done) {
+            chai.request(server)
+                .post('/data/character')
+                .send({
+                    'name': 'Harry Potter',
+                    'image': 'http://cdn.playbuzz.com/cdn/8de88741-d729-4319-aa46-e8a544a20439/f7cade9d-8daf-42b3-8839-3e0e1f3db283.jpeg',
+                    'group': 'Harry Potter',
+                    'world': 'i',
+                    'information': 's',
+                    'decision': 't',
+                    'structure': 'p'
+                })
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    res.should.be.json;
+                    res.should.be.a('object');
+                    res.body._id.should.equal(id);
                     done();
                 });
         });
 
 
-        //        it('in getting a character', function (done) {
-        //            chai.request(server)
-        //                .get('/data/character:')
-        //                .send({
-        //                    'name': 'Harry Potter',
-        //                    'image': 'http://cdn.playbuzz.com/cdn/8de88741-d729-4319-aa46-e8a544a20439/f7cade9d-8daf-42b3-8839-3e0e1f3db283.jpeg',
-        //                    'group': 'Harry Potter',
-        //                    'MBT': ['i', 's', 'f', 'p']
-        //                })
-        //                .end(function (err, res) {
-        //                    res.should.have.status(200);
-        //                    res.should.be.json;
-        //                    res.should.be.a('object');
-        //                    //                    console.log(res.body)
-        //                    res.body[0].should.have.property('name');
-        //                    res.body[0].name.should.equal('Harry Potter');
-        //                    res.body[0].image.should.equal('http://cdn.playbuzz.com/cdn/8de88741-d729-4319-aa46-e8a544a20439/f7cade9d-8daf-42b3-8839-3e0e1f3db283.jpeg');
-        //                    res.body[0].group.should.equal('Harry Potter');
-        //                    res.body[0].should.have.property('MBTID');
-        //                    res.body[0].MBTID.should.be.a('string');
-        //                    done();
-        //                });
-        //        });
+        it('in getting a character set', function (done) {
+            chai.request(server)
+                .get('/data/character/disney-character')
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    res.should.be.json;
+                    res.should.be.a('object');
+                    res.body.length.should.equal(16);
+                    done();
+                });
+        });
     });
 });
 
