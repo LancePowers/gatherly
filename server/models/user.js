@@ -22,6 +22,11 @@ var Gather = new Schema({
 
 })
 
+var gatherExperience = new Schema({
+    gatherID: String,
+    experienceID: String
+})
+
 
 var Experience = new Schema({
     name: String,

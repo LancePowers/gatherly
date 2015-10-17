@@ -52,5 +52,29 @@ h2 {
     color: #fff;
     background-color: #222;
     padding-top: 70px;
-    padding-bottom: 70px
+    padding-bottom: 70px;
+}
+
+.carousel-inner {
+    min-height: 300px;
+}
+
+.carousel-caption {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    min-height: 500px;
+    /*
+    top: 50%;
+  transform: translateY(-50%);
+*/
+    text-shadow: 2px 2px #000000;
+    background-color: rgba(34, 34, 34, .8);
+}
+
+.carousel-button {
+    color: darkslategrey;
+}
+
+#page-top > div > div > div > div > div > div:nth-child(1) {
+    min-height: 100%;
 }

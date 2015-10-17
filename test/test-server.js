@@ -93,8 +93,8 @@ describe('Log in', function () {
 
 describe('Serve an experience', function () {
     describe('should be successful', function () {
-        Experience.collection.drop();
-        Image.collection.drop();
+//        Experience.collection.drop();
+//        Image.collection.drop();
         var id = 0;
         it('in creating an experience', function (done) {
             chai.request(server)

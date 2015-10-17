@@ -1,3 +1,4 @@
+process.env.NODE_ENV = 'development';
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
@@ -54,6 +55,7 @@ router.get('/experience/:id', function (req, res, err) {
 // *** IMAGE *** //
 
 router.get('/image/:id', function (req, res, err) {
+    console.log('in image route')
     db.Image.findQ({
             experienceID: req.params.id
         })
@@ -69,9 +71,10 @@ router.get('/image/:id', function (req, res, err) {
 
 // *** CHARACTER *** //
 
-router.get('/character/:id', function (req, res, err) {
+router.get('/character/:group', function (req, res, err) {
+
     db.Character.find({
-            group: req.params.id
+            group: req.params.group
         })
         .then(function (result) {
             res.json(result);
@@ -117,7 +120,13 @@ router.post('/character', function (req, res, err) {
 
 // *** GATHER *** //
 router.post('/gather', function (req, res, err) {
+    // 3 experiences 
+    // 4 roles
+    // 
+
+
     console.log('gather');
+
     new db.Gather({
             name: req.body.name,
             description: req.body.description,

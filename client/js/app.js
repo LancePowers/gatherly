@@ -2,9 +2,9 @@ var app = angular.module('gatherly', ['ngRoute', 'ngAnimate', 'ui.bootstrap']);
 
 app.config(function ($routeProvider) {
     $routeProvider
-        .when('/landing', {
-            templateUrl: 'views/landing.html',
-            controller: 'landingController'
+        .when('/register', {
+            templateUrl: 'views/register.html',
+            controller: 'registerController'
         })
         .when('/login', {
             templateUrl: 'views/login.html',
@@ -34,9 +34,12 @@ app.config(function ($routeProvider) {
             templateUrl: 'views/role-select.html',
             controller: 'roleSelectController'
         })
+        .when('/character', {
+            templateUrl: 'views/characters.html',
+        })
         .otherwise({
-            templateUrl: 'views/landing-page.html',
-            controller: 'landingController'
+            templateUrl: 'views/gather.html',
+            controller: 'gatherController'
         })
 })
 

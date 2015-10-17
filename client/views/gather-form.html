@@ -1,21 +1,20 @@
 <div>
-    <div style="height: 200px" class="dark-bg">
-        <div>{{slides[0].name}}</div>
+    <div style="height: 905px">
         <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
             <uib-slide ng-repeat="slide in slides" active="slide.active">
+                <!--           <img ng-src="{{slide.image}}" style="margin:auto;">-->
                 <div class="carousel-caption">
-                    <h4>{{slide.name}}</h4>
-                    <p>{{slide.edds}}</p>
+                    <h1>{{slide.name}}</h1>
+                    <hr>
+                    <h3>{{slide.edds}}</h3>
+                    <p>{{slide.description}}</p>
+                    <button class="carousel-button btn btn-lg btn-success" ng-click="debug()">Choose Experience</button>
                 </div>
-                <img ng-src="{{slide.image}}" style="margin:auto;">
+                <video autoplay loop id="video-background" muted>
+                    <source src="http://beta.mattgrossdesign.com/sites/default/files/wood%20autumn-HD.mp4" type="video/mp4">
+                </video>
             </uib-slide>
         </uib-carousel>
     </div>
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <button type="button" class="btn btn-info center-block" ng-click="addExperience()">Add Experience {{prompt}}</button>
-            <button type="button" class="btn btn-info center-block" ng-click="debug()">Add Experience {{prompt}}</button>
-        </div>
-    </div>
+    <button class="carousel-button" ng-click="debug()">CLICKA DA ME</button>
 </div>

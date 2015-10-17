@@ -442,11 +442,14 @@ fieldset[disabled] .btn-primary.active {
     background: #222;
 }
 
+
+/*
 ::selection {
     text-shadow: none;
     color: #fff;
     background: #222;
 }
+*/
 
 img::selection {
     color: #fff;
@@ -460,4 +463,10 @@ img::-moz-selection {
 
 body {
     webkit-tap-highlight-color: #222;
+}
+
+.description-text {
+    margin-bottom: 15px;
+    font-size: 12px;
+    line-height: 1.2;
 }

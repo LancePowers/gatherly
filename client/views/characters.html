@@ -1,0 +1,20 @@
+<div ng-controller="ModalDemoCtrl">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h2 class="modal-title">Choose a character group:</h2>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li ng-repeat="item in items">
+                    <a href="#" ng-click="$event.preventDefault(); selected.item = item $scope.getCharacters('disney-characters')">{{ item }}</a>
+                </li>
+            </ul>
+        </div>
+
+    </script>
+
+    <!--        <button type="button" class="btn btn-default" ng-click="open()">Open me!</button>-->
+    <button type="button" class="btn btn-default" ng-click="open('lg')">Large modal</button>
+    <!--        <button type="button" class="btn btn-default" ng-click="open('sm')">Small modal</button>-->
+    <!--        <button type="button" class="btn btn-default" ng-click="toggleAnimation()">Toggle Animation ({{ animationsEnabled }})</button>-->
+</div>

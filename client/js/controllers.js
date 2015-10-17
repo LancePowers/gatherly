@@ -45,71 +45,114 @@ app.controller('experienceController', function ($scope, httpFactory, $location,
 });
 
 
-app.controller('gatherFormController', function ($scope, httpFactory, $location) {
-    $scope.prompt = '#1'
+app.controller('gatherFormController', function ($scope, httpFactory, $location, slides) {
+    $scope.slides = [];
+    $scope.imageIndex = 0;
+    $scope.gather = {
+        experiences: []
+    }
+
+    httpFactory.get('data/experiences').then(function (results) {
+            $scope.slides = slides.parseExperiences(results);
+        })
+        .then(function (results) {
+            console.log($scope.slides)
+            var images = []
+            for (var i = 0; i < $scope.slides.length; i++) {
+                var imageUrl = 'data/image/' + $scope.slides[i].id;
+                httpFactory.get(imageUrl).then(function (results) {
+                    $scope.slides[$scope.imageIndex].image = results.data[0].image;
+                    $scope.imageIndex++
+                        console.log($scope.slides);
+                });
+            }
+        })
+
     $scope.myInterval = 5000;
     $scope.noWrapSlides = false;
-    $scope.names = [];
-    $scope.edds = [];
-    $scope.images = [];
-    $scope.ids = [];
-    $scope.slides = [];
-    $scope.debug = function () {
-        debugger
-    };
     $scope.index = 0;
 
-    $scope.experiences = [];
+    // on click add the current slide/experience to the gather
     $scope.addExperience = function () {
-        console.log($scope.getActiveSlide().id)
         $scope.experiences.push($scope.getActiveSlide());
     }
+
+
     $scope.getActiveSlide = function () {
         return $scope.slides.filter(function (s) {
             return s.active;
         })[0];
     };
-    $scope.getImage = function (imageUrl) {
-        httpFactory.get(imageUrl)
-            .then(function (response) {
-                if (response.data[0].image.length > 10) {
-                    $scope.images.push(response.data[0].image);
-                    $scope.createSlides();
-                }
-                console.log($scope.slides)
-            })
+    $scope.debug = function () {
+        debugger
     };
-
-    $scope.addSlide = function () {
-        httpFactory.get('data/experiences')
-            .then(function (response) {
-                for (var i = 0; i < response.data.length; i++) {
-                    $scope.names.push(response.data[i].name);
-                    $scope.edds.push(response.data[i].edds);
-                    $scope.ids.push(response.data[i]._id);
-                    $scope.getImage('data/image/' + response.data[i]._id)
-                }
-            })
-    };
-    $scope.createSlides = function () {
-        var slide = {
-            image: $scope.images[$scope.index],
-            name: $scope.names[$scope.index],
-            edds: $scope.edds[$scope.index],
-            id: $scope.ids[$scope.index],
-        }
-        $scope.slides.push(slide);
-        $scope.index++;
-    }
-    $scope.addSlide();
 });
 
+app.controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
+
+    $scope.items = ['item1', 'item2', 'item3'];
+
+    $scope.animationsEnabled = true;
+
+    $scope.open = function (size) {
+
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'myModalContent.html',
+            controller: 'ModalInstanceCtrl',
+            size: size,
+            resolve: {
+                items: function () {
+                    return $scope.items;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
+
+    $scope.toggleAnimation = function () {
+        $scope.animationsEnabled = !$scope.animationsEnabled;
+    };
+    $scope.open('lg');
+
+    $scope.getCharacters = function (group) {
+        var groupUrl = '/data/character' + group;
+        httpFactory.get(groupUrl)
+            .then(function (response) {
+                $scope.characters = response.data
+            })
+    };
+
+});
+
+// Please note that $modalInstance represents a modal window (instance) dependency.
+// It is not the same as the $uibModal service used above.
+
+app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
+    $scope.items = items;
+    $scope.selected = {
+        item: $scope.items[0]
+    };
+
+    $scope.ok = function () {
+        $modalInstance.close($scope.selected.item);
+    };
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+});
 
 app.controller('gatherController', function ($scope) {
     $scope.eImage1 = "that";
 });
 
-app.controller('landingController', function ($scope) {
+app.controller('registerController', function ($scope) {
     $scope.this = "that";
 });
 
