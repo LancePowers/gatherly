@@ -10,8 +10,7 @@ var mongoose = require('mongoose');
 var config = require('../_config.js');
 var session = require('express-session');
 var flash = require('connect-flash');
-var populateCharacters = require('../img/characters/populate-character.js')
-
+//var populateCharacters = require('./img/characters/populate-character.js')
 
 // *** routes *** //
 var authRoutes = require('./routes/userAPI.js');

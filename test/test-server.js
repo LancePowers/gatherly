@@ -93,8 +93,8 @@ describe('Log in', function () {
 
 describe('Serve an experience', function () {
     describe('should be successful', function () {
-//        Experience.collection.drop();
-//        Image.collection.drop();
+        //        Experience.collection.drop();
+        //        Image.collection.drop();
         var id = 0;
         it('in creating an experience', function (done) {
             chai.request(server)
@@ -175,7 +175,6 @@ describe('Character management', function () {
             chai.request(server)
                 .post('/data/character')
                 .send({
-                    'name': 'Harry Potter',
                     'image': 'http://cdn.playbuzz.com/cdn/8de88741-d729-4319-aa46-e8a544a20439/f7cade9d-8daf-42b3-8839-3e0e1f3db283.jpeg',
                     'group': 'Harry Potter',
                     'world': 'i',
@@ -188,8 +187,6 @@ describe('Character management', function () {
                     res.should.be.json;
                     res.should.be.a('object');
                     console.log(res.body)
-                    res.body[0].should.have.property('name');
-                    res.body[0].name.should.equal('Harry Potter');
                     res.body[0].image.should.equal('http://cdn.playbuzz.com/cdn/8de88741-d729-4319-aa46-e8a544a20439/f7cade9d-8daf-42b3-8839-3e0e1f3db283.jpeg');
                     res.body[0].group.should.equal('Harry Potter');
                     res.body[0].should.have.property('world');

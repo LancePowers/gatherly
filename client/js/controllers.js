@@ -88,11 +88,19 @@ app.controller('gatherFormController', function ($scope, httpFactory, $location,
     };
 });
 
-app.controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
+app.controller('ModalDemoCtrl', function ($scope, $uibModal, $log, httpFactory) {
 
-    $scope.items = ['item1', 'item2', 'item3'];
+    $scope.items = ['disney-character', 'action-hero'];
 
     $scope.animationsEnabled = true;
+
+    $scope.src = function () {
+        for (var i = 0; i < $scope.characters.length; i++) {
+            var image = $scope.characters[i].image
+            $scope.characters[i].image = 'http://localhost:8080/img/characters/' + image;
+            console.log($scope.characters[i].image)
+        }
+    }
 
     $scope.open = function (size) {
 
@@ -108,8 +116,9 @@ app.controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
             }
         });
 
-        modalInstance.result.then(function (selectedItem) {
-            $scope.selected = selectedItem;
+        modalInstance.result.then(function (selectedGroup) {
+            $scope.selected = selectedGroup;
+            $scope.getCharacters(selectedGroup);
         }, function () {
             $log.info('Modal dismissed at: ' + new Date());
         });
@@ -119,19 +128,20 @@ app.controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
         $scope.animationsEnabled = !$scope.animationsEnabled;
     };
     $scope.open('lg');
-
     $scope.getCharacters = function (group) {
-        var groupUrl = '/data/character' + group;
+        console.log(group);
+        var groupUrl = '/data/character/' + group;
         httpFactory.get(groupUrl)
             .then(function (response) {
-                $scope.characters = response.data
+                console.log(response)
+                $scope.characters = response.data;
+                $scope.src();
             })
     };
 
-});
 
-// Please note that $modalInstance represents a modal window (instance) dependency.
-// It is not the same as the $uibModal service used above.
+
+});
 
 app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
     $scope.items = items;

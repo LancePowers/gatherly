@@ -72,7 +72,8 @@ router.get('/image/:id', function (req, res, err) {
 // *** CHARACTER *** //
 
 router.get('/character/:group', function (req, res, err) {
-
+    console.log('here')
+    console.log(req.params.group);
     db.Character.find({
             group: req.params.group
         })
@@ -87,14 +88,16 @@ router.get('/character/:group', function (req, res, err) {
 
 
 router.post('/character', function (req, res, err) {
+    console.log(req.header)
     db.Character.findOne({
             image: req.body.image
         }).then(function (result) {
             if (result) {
+                console.log(result)
                 res.json(result);
             } else {
+                console.log(req.body)
                 new db.Character({
-                        name: req.body.name,
                         image: req.body.image,
                         group: req.body.group,
                         world: req.body.world,

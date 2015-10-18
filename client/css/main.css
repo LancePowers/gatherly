@@ -470,3 +470,12 @@ body {
     font-size: 12px;
     line-height: 1.2;
 }
+
+.character-display {
+    float: left;
+    max-height: 250px;
+    padding: 5px;
+    -webkit-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.48);
+    -moz-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.48);
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.48);
+}
