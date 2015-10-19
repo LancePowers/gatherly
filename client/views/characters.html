@@ -1,5 +1,5 @@
-<div>
-    <div ng-controller="ModalDemoCtrl">
+<div ng-controller="ModalDemoCtrl">
+    <div>
         <script type="text/ng-template" id="myModalContent.html">
             <div class="modal-header">
                 <h2 class="modal-title">Choose a character group:</h2>
@@ -19,10 +19,12 @@
         <!--        <button type="button" class="btn btn-default" ng-click="open('sm')">Small modal</button>-->
         <!--        <button type="button" class="btn btn-default" ng-click="toggleAnimation()">Toggle Animation ({{ animationsEnabled }})</button>-->
     </div>
-    <div ng-controller="ModalDemoCtrl">
+    <div class="center-block">
         <div>
-            <div class="character-display" ng-repeat="character in characters">
-                <img class="character-display" ng-src="{{character.image}}">
+            <div ng-repeat="character in characters">
+                <a>
+                    <img class="character-display" ng-src="{{character.image}}" ng-class="{ 'character-selected': isSelected(character)}" ng-click="addCharacter(character)">
+                </a>
             </div>
         </div>
     </div>

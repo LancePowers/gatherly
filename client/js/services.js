@@ -64,6 +64,17 @@ app.factory('slides', function (httpFactory, $q) {
     }
 })
 
+app.factory('gatherHolder', function (httpFactory, $q) {
+    var experiences = [];
+    var characters = [];
+    var roles = [];
+    return {
+        experiences: experiences,
+        characters: characters,
+        roles: roles
+    }
+});
+
 
 //                    var createSlides = function () {
 //                        var slide = {

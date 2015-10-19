@@ -88,16 +88,35 @@ app.controller('gatherFormController', function ($scope, httpFactory, $location,
     };
 });
 
-app.controller('ModalDemoCtrl', function ($scope, $uibModal, $log, httpFactory) {
+app.controller('ModalDemoCtrl', function ($scope, $uibModal, $log, httpFactory, gatherHolder) {
 
     $scope.items = ['disney-character', 'action-hero'];
 
     $scope.animationsEnabled = true;
 
+    $scope.isSelected = function (character) {
+        for (var i = 0; i < gatherHolder.characters.length; i++) {
+            if (character._id === gatherHolder.characters[i]._id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    $scope.addCharacter = function (character) {
+        if ($scope.isSelected(character)) {
+            gatherHolder.characters.splice(gatherHolder.characters.indexOf(character), 1);
+            console.log(gatherHolder.characters);
+        } else {
+            gatherHolder.characters.push(character);
+            console.log(gatherHolder.characters);
+        }
+    }
+
     $scope.src = function () {
         for (var i = 0; i < $scope.characters.length; i++) {
             var image = $scope.characters[i].image
-            $scope.characters[i].image = 'http://localhost:8080/img/characters/' + image;
+            $scope.characters[i].image = 'http://localhost:3000/img/characters/' + image;
             console.log($scope.characters[i].image)
         }
     }
