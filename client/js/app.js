@@ -35,7 +35,7 @@ app.config(function ($routeProvider) {
             controller: 'roleSelectController'
         })
         .when('/character', {
-            templateUrl: 'views/characters.html',
+            templateUrl: 'components/character/characters.html',
         })
         .otherwise({
             templateUrl: 'views/gather.html',
