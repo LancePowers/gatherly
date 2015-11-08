@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="en" ng-app="app">
 
 <head>
     <meta charset="utf-8">
@@ -9,34 +9,40 @@
     <!-- Bootstrap-->
     <!--    <link href="css/bootstrap.min.css" rel="stylesheet">-->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <!--
     <link href="css/animate.css" rel="stylesheet">
-    <!-- Custom CSS -->
+     Custom CSS 
     <link href="css/main.css" rel="stylesheet">
     <link href="components/character/characters.css" rel="stylesheet">
     <link href="css/roles.css" rel="stylesheet">
     <link href="css/experiences.css" rel="stylesheet">
-    <link href="css/gather.css" rel="stylesheet">
+    
+-->
+    <link href="components/gather/gather.css" rel="stylesheet">
+    <link href="components/selectGrid/characters.css" rel="stylesheet">
+
     <!-- Custom Fonts -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
+    <!--    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>-->
     <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.1.js"></script>
 </head>
 
 
-<body ng-app="gatherly" id="page-top" class="index">
-    <!-- view -->
-    <div ng-view> </div>
-
-    <script src="js/app.js"></script>
-    <script src="js/authServices.js"></script>
-    <script src="js/services.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/user.js"></script>
-    <script src="components/character/character-ctrl.js"></script>
-
-
+<body id="page-top" class="index">
+    <div ui-view></div>
+    <script src="app.module.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+    <script src="router/router.module.js"></script>
+    <script src="router/router.helper.js"></script>
+    <script src="components/component.module.js"></script>
+    <script src="services/character.service.js"></script>
+    <script src="services/router.service.js"></script>
+    <script src="services/gatherHolder.service.js"></script>
+    <script src="components/gather/gather.module.js"></script>
+    <script src="components/gather/gather.directive.js"></script>
+    <script src="components/selectGrid/selectGrid.module.js"></script>
+    <script src="components/selectGrid/selectGrid.directive.js"></script>
 
 </body>
 

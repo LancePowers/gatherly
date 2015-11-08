@@ -1,0 +1,12 @@
+<div>
+    <div class="center-block">
+        <div>
+            <div ng-repeat="square in vm.squares">
+                <a href="#/gather">
+                    <img class="square-display" ng-src="{{square.image}}" ng-class="{ 'square-selected': vm.isSelected(square)}" ng-click="vm.updateSquare(square)">
+                </a>
+            </div>
+        </div>
+        <button ng-click="vm.populateSquares()">Clicka da me</button>
+    </div>
+</div>

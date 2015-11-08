@@ -1,4 +1,4 @@
-.character-display {
+.square-display {
     float: left;
     max-width: 45%;
     margin: 2%;
@@ -8,6 +8,6 @@
     box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.48);
 }
 
-.character-selected {
+.square-selected {
     background-color: coral;
 }

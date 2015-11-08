@@ -1,0 +1,70 @@
+.navbar-default .nav > li>a,
+.navbar-default .nav>li>a:focus {
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    color: #c2c2c2;
+}
+
+.navbar-default {
+    border-color: rgba(34, 34, 34, .05);
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+    background-color: #000000;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+
+.center {
+    text-align: center;
+}
+
+h3 {
+    color: white;
+}
+
+hr {
+    max-width: 50px;
+    border-color: white;
+    border-width: 3px;
+}
+
+.btn-xl {
+    padding: 10px 10px;
+}
+
+.header-content {
+    position: relative;
+    width: 100%;
+    padding: 80px 15px;
+    text-align: center;
+}
+
+.btn-primary {
+    border-color: black;
+    color: #fff;
+    background-color: black;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+
+.experience-image {
+    min-height: 1136px;
+}
+
+.dark-bg {
+    max-width: 300px;
+}
+
+#video-background {
+    /*  making the video fullscreen  */
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+}

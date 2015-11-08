@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h1>My Experience...</h1>
+            <p class="description-text">An experience is something unique that you have discovered about your city. It's not just a cool bar or fun hike, it's drinking a specialty cocktail watching an amazing local jazz band that plays at the bar every other Tuesday or grabbing a sandwich from the little shop in town and finding that special spot to turn the hike into a sunset picnic.</p>
+            <hr class="star-primary">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <form name="experienceForm" id="experienceSubmitForm" ng-submit="addExperience()" novalidate>
+
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label>Name</label>
+                        <input type="text" class="form-control" placeholder="What's the experience?" ng-model="name" required data-validation-required-message="your experience hasta have a name...">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label>Type</label>
+                        <select class="form-control" placeholder="eat, drink, do or see?" ng-model="edds" required data-validation-required-message="What kinda experience is it?">
+                            <option>EAT</option>
+                            <option>DRINK</option>
+                            <option>DO</option>
+                            <option>SEE</option>
+                        </select>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label>Description</label>
+                        <input type="text" class="form-control" placeholder="What makes this experience amazing?" ng-model="description" required data-validation-required-message="yo! what's your experience about?">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label>Image URL</label>
+                        <input type="text" class="form-control" placeholder="Image URL please..." ng-model="image" required data-validation-required-message="come on, do it! please...">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <br>
+                <div id="success"></div>
+                <div class="row">
+                    <div class="form-group col-xs-12">
+                        <button type="submit" class="btn btn-success center-block btn-md" ng-click="postExperience()">Create Your Experience</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
