@@ -31,6 +31,7 @@
                 gatherHolder.removeCharacter(character);
             } else {
                 gatherHolder.addCharacter(character);
+            console.log('in update square', character)
             }
         }
         vm.isSelected = function (character) {

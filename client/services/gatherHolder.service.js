@@ -16,13 +16,14 @@
         holder.characters = [];
         holder.roles = [];
         holder.experiences = [];
+        //holder.display = [];
 
 
         holder.setPosition = function (position) {
-            holder.position = position;
-        }
-        holder.addCharacter = function (character) {
-            holder.characters.push({
+     holder.position = position;
+ }
+ holder.addCharacter = function (character) {
+         holder.characters.push({
                 position: holder.position,
                 character: character
             });

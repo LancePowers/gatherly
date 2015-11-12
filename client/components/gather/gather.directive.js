@@ -23,7 +23,8 @@
     function GatherController(gatherHolder) {
         var vm = this;
         vm.select = function (event) {
-            var position = parseInt(event.srcElement.id);
+            console.log(event.srcElement.id);
+            var position = event.srcElement.id;
             gatherHolder.setPosition(position);
         }
         vm.images = {
@@ -33,6 +34,8 @@
             '3': ''
         }
         vm.populateImages = function (position) {
+            console.log(position);
+            console.log(gatherHolder.characters);
             gatherHolder.characters.forEach(function (character) {
                 if (character.position === position) {
                     vm.images.one = character.character.image;
