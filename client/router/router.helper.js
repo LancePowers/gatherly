@@ -1,3 +1,5 @@
+// angular ui router
+
 (function () {
     angular.module('router').config(function ($stateProvider, $urlRouterProvider) {
 
@@ -11,6 +13,10 @@
             .state('select-grid', {
                 url: '/select-grid',
                 templateUrl: 'router/select.grid.view.html'
+            })
+            .state('experience', {
+                url: '/experience',
+                templateUrl: 'router/experience.html'
             })
     });
 })();

@@ -1,18 +1,5 @@
-<a class="box" id="0" ng-click="vm.select($event)" href="/#/select-grid">CHAR
-    </a>
-<a class="box" href="/#/experience">EXP
-    </a>
-<a class="box" id="one" ng-click="vm.select($event)" href="/#/select-grid"><img ng-src="{{vm.images.one}}" />
+<a class="box col-xs-4" ng-click="vm.select($index)" href="/#/select-grid" ng-repeat="display in vm.displays track by $index">
+    <img class="gather-image" ng-src="{{display.character.image}}" />
+    <h4>{{display.text}}</h4>
 </a>
-<a class="box" href="/#/experience">EXP
-    </a>
-<a class="box">ROLES
-    </a>
-<a class="box" href="/#/experience">EXP
-    </a>
-<a class="box" id="2" href="/#/select-grid">CHAR
-    </a>
-<a class="box">LOGIN/GO
-    </a>
-<a class="box" id="3" href="/#/select-grid">CHAR
-    </a>
+<!--    bkg image-->

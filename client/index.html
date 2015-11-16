@@ -6,36 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Gatherly</title>
-    <!-- Bootstrap-->
-    <!--    <link href="css/bootstrap.min.css" rel="stylesheet">-->
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-    <!--
-    <link href="css/animate.css" rel="stylesheet">
-     Custom CSS 
-    <link href="css/main.css" rel="stylesheet">
-    <link href="components/character/characters.css" rel="stylesheet">
-    <link href="css/roles.css" rel="stylesheet">
-    <link href="css/experiences.css" rel="stylesheet">
-    
--->
+
+    <!-- stylesheets -->
+    <link href="css/bootstrap.css" rel="stylesheet">
     <link href="components/gather/gather.css" rel="stylesheet">
     <link href="components/selectGrid/characters.css" rel="stylesheet">
 
-    <!-- Custom Fonts -->
+    <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
-    <!--    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
     <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+
 </head>
 
 
 <body id="page-top" class="index">
+
+    <!-- ui router view -->
     <div ui-view></div>
-    <script src="app.module.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+
+    <!-- custom scripts -->
     <script src="router/router.module.js"></script>
     <script src="router/router.helper.js"></script>
+    <script src="app.module.js"></script>
     <script src="components/component.module.js"></script>
+    <script src="components/component.directive.js"></script>
     <script src="services/character.service.js"></script>
     <script src="services/router.service.js"></script>
     <script src="services/gatherHolder.service.js"></script>
@@ -43,6 +40,7 @@
     <script src="components/gather/gather.directive.js"></script>
     <script src="components/selectGrid/selectGrid.module.js"></script>
     <script src="components/selectGrid/selectGrid.directive.js"></script>
+
 
 </body>
 

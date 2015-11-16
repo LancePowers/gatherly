@@ -1,3 +1,5 @@
+// angular factory to retrieve images for characters and store characters.
+
 (function () {
     'use strict'
     angular

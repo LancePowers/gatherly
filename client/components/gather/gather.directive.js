@@ -12,37 +12,36 @@
             controller: GatherController,
             controllerAs: 'vm',
             bindToController: true,
-            link: function (scope, elem, attrs, controller) {
-
-            }
         }
     }
 
+    // Inject singleton service for holding experiences, characters, and go/login squares
     GatherController.$inject = ['gatherHolder'];
 
     function GatherController(gatherHolder) {
         var vm = this;
-        vm.select = function (event) {
-            console.log(event.srcElement.id);
-            var position = event.srcElement.id;
+
+        // Initialize the gatherHolder singleton
+        gatherHolder.init();
+
+        
+        // Set position of click event for use in gather holder
+        vm.select = function (position) {
             gatherHolder.setPosition(position);
         }
-        vm.images = {
-            '0': '',
-            one: '',
-            '2': '',
-            '3': ''
-        }
-        vm.populateImages = function (position) {
-            console.log(position);
-            console.log(gatherHolder.characters);
-            gatherHolder.characters.forEach(function (character) {
-                if (character.position === position) {
-                    vm.images.one = character.character.image;
-                }
-            })
-        }
-        vm.populateImages('one');
+
+        // Used to populate the display array used in the ng-repeat from the gather holder service 
+        vm.displays = gatherHolder.getDisplay();
+        
+//        
+//        vm.populateImages = function (position) {
+//            gatherHolder.characters.forEach(function (character) {
+//                if (character.position === position) {
+//                    vm.images.one = character.character.image;
+//                }
+//            })
+//        }
+//        vm.populateImages('one');
 
 
     };

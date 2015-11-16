@@ -1,3 +1,5 @@
+// factory to handle server calls.
+
 (function () {
     'use strict'
     angular

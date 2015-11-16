@@ -1,15 +1,11 @@
-body {
-    background-color: #f2f2f2;
-}
-
 .box {
-    float: left;
-    position: relative;
-/*    background-image: url("http://www.stickylife.com/images/u/5082893acb2348ab9c043eb664601279-800.png");*/
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    padding-bottom: 30%;
-    width: 30%;
-    margin: 1.66%;
+    padding: 10px;
+    height: 200px;
+    -webkit-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.48);
+    -moz-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.48);
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.48);
+}
+.gather-image {
+    max-width: 100%;
+    max-height: 100%;
 }

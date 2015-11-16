@@ -1,3 +1,5 @@
+// Template to use for future experience creation form.
+
 (function () {
     'use strict ';
     angular.module('app.components.selectGrid')

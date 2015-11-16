@@ -1,3 +1,5 @@
+// Copied directive structure from select grid to use for experiences.
+
 (function () {
     'use strict ';
     angular.module('app.components.selectGrid')
