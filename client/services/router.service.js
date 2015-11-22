@@ -14,6 +14,7 @@
         obj.get = function (url) {
             return $http.get(url).then(characters.set);
         };
+
         //2. post request
         obj.post = function (url, payload) {
             return $http.post(url, payload);
