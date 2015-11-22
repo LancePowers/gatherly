@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('app.components.gather', [
+    angular.module('app.components.gather', ['ngMaterial'
 
     ]);
 

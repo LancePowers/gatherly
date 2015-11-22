@@ -1,5 +1,13 @@
-<a class="box col-xs-4" ng-click="vm.select($index)" href="/#/select-grid" ng-repeat="display in vm.displays track by $index">
-    <img class="gather-image" ng-src="{{display.character.image}}" />
-    <h4>{{display.text}}</h4>
-</a>
-<!--    bkg image-->
+<md-grid-list class="gridListdemoDynamicTiles" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="4" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="8px" md-gutter-gt-sm="4px" layout-align="center">
+
+    <md-grid-tile ng-repeat="display in vm.displays track by $index" md-rowspan="1" md-colspan="1" md-colspan-sm="1" ng-click="vm.select($index)" ng-style="{'background-image': 'url(' + display.character.image + ')'}">
+
+
+        <!--        <md-icon md-svg-icon="{{display.icon}}"></md-icon>-->
+
+        <md-grid-tile-footer>
+            <h3>{{display.text}}</h3>
+        </md-grid-tile-footer>
+    </md-grid-tile>
+
+</md-grid-list>

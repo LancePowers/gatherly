@@ -4,7 +4,7 @@
     'use strict';
 
     angular.module('app', [
-//        'ngMaterial',
+        'ngMaterial',
         'ngRoute',
         'app.components',
         'router'
