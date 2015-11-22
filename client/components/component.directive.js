@@ -31,7 +31,6 @@
 
         // Toggle views
         vm.showHide = function () {
-            vm.selectGrid = !vm.selectGrid;
             vm.gather = !vm.gather;
         }
 

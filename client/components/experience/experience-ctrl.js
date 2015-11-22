@@ -1,9 +1,3 @@
-// Code from first pass on experience form and experience display. This will be replaced with new
-// custom directives for each.
-
-
-
-
 app.controller('experienceFormController', function ($scope, httpFactory, $location) {
     // Post Experiences
     $scope.postExperience = function () {

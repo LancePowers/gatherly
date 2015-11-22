@@ -12,10 +12,7 @@
 
     function gatherHolder() {
 
-        // Declare object for return on gatherHolder service
         var holder = {};
-
-        //declare variable for grid position selected
         holder.position = '';
 
 

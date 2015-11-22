@@ -20,6 +20,10 @@
 
     function SelectGridController() {
         var vm = this;
+        var experience = {
+            name
+        }
+
 
     }
 })();
