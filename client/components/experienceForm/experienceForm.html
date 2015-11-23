@@ -1,0 +1,54 @@
+<div layout="column" class="md-inline-form">
+    <md-content layout-padding>
+        <form>
+
+            <!--            Name-->
+
+            <div class="md-block">
+                <md-input-container>
+                    <label>Experience Name</label>
+                    <input ng-model="experienceFormContent.name" placeholder="Ex. A sweet, street art walk">
+                </md-input-container>
+                <md-input-container>
+                    <label>Eat? Drink? Do? See?</label>
+                    <input ng-model="experienceFormContent.type" placeholder="Ex. Do and see!">
+                </md-input-container>
+                <md-input-container>
+                    <label>Where exactly is it?</label>
+                    <input ng-model="experienceFormContent.city" placeholder="Ex. Denver">
+                </md-input-container>
+                <md-input-container>
+                    <label>Neighborhood</label>
+                    <input ng-model="experienceFormContent.neighborhood" placeholder="Ex. Five Points">
+                </md-input-container>
+
+                <!--            type-->
+                <md-input-container>
+                    <label>Best time to do it? </label>
+                    <input ng-model="experienceFormContent.bestTime" placeholder="Ex. Any summer evenings or weekends during the day.">
+                </md-input-container>
+                <md-input-container>
+                    <label>Cost? </label>
+                    <input ng-model="experienceFormContent.cost" placeholder="Ex. Free! (Range would be totally cool too!">
+                </md-input-container>
+                <md-input-container>
+                    <label>Picture </label>
+                    <input ng-model="experienceFormContent.image" placeholder="Please upload an image to imgur and paste the url here!">
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Description</label>
+                    <textarea ng-model="experienceFormContent.biography" columns="1" md-maxlength="150" rows="5" placeholder="Ex. A wicked, cool walk through some of the most beautiful art in Denver that changes about every 3 months. If you haven't seen it, you need to!"></textarea>
+                </md-input-container>
+                <md-button class="md-fab md-warn" aria-label="Cancel">
+                    <ng-md-icon icon="do_not_disturb" ng-click="vm.experienceFormCancel()"></ng-md-icon>
+
+                </md-button>
+                <md-button class="md-fab md-primary" aria-label="Submit">
+                    <ng-md-icon icon="done" ng-click="vm.experienceFormSubmit()"></ng-md-icon>
+
+                </md-button>
+        </form>
+
+    </md-content>
+    </div>

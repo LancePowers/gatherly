@@ -18,5 +18,9 @@
                 url: '/experience',
                 templateUrl: 'router/experience.html'
             })
+            .state('experience-form', {
+                url: '/experience-form',
+                templateUrl: 'router/experience.form.view.html'
+            })
     });
 })();

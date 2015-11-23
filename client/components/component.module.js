@@ -3,7 +3,8 @@
 
     angular.module('app.components', [
         'app.components.dialog',
-        'app.components.grid'
+        'app.components.grid',
+        'app.components.experienceForm'
     ]);
 
 })();
