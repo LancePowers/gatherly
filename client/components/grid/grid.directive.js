@@ -12,6 +12,7 @@
             controller: GridController,
             controllerAs: 'vm',
             bindToController: true,
+            //need to add a link or transclude to determine state.
         }
     }
 
@@ -35,9 +36,9 @@
             vm.showTabDialog(ev)
         }
         console.log(characters.characters)
-        vm.displays = characters.characters;
+        vm.displays = gatherHolder.getDisplay();
+        //            characters.characters;
         //      experiences.experiences
-        //            gatherHolder.getDisplay();
 
     };
 
