@@ -30,16 +30,23 @@
             })
         }
 
-        gatherHolder.init();
+
 
         vm.select = function (ev) {
             vm.showTabDialog(ev)
         }
-        console.log(characters.characters)
-        vm.displays = gatherHolder.getDisplay();
-        //            characters.characters;
-        //      experiences.experiences
 
+        vm.displays = gatherHolder.getDisplay();;
+
+        //characters.set(vm.setDisplay);
+        vm.setDisplay = function (arr) {
+            console.log(arr)
+            vm.displays = arr;
+        }
+        console.log(vm.displays);
+
+
+        //experiences.experiences
     };
 
 })();

@@ -33,24 +33,7 @@
             image: ''
         };
 
-        // Initialize the  gather holder values. Roles, experiences currently hard coded
-        holder.init = function () {
-            var roles = ['Commander', 'Protector', 'Performer', 'Visionary'];
-            var experienceImages = ['img/averybrewing.png', 'img/bouldertube.png', 'img/glacier.png']
-            for (var i = 0; i < 4; i++) {
-                this.roles.push({
-                    text: roles[i],
-                    image: ''
-                })
-            }
-            for (var i = 0; i < 3; i++) {
-                this.experiences.push({
-                    character: {
-                        image: experienceImages[i]
-                    }
-                })
-            }
-        }
+
 
 
         // functions to manipulate characters, roles, and experiences
@@ -93,9 +76,20 @@
         // Default to roles followed by character selection
 
         holder.getDisplay = function () {
-            var displayAreas = [(this.characters[0] || this.roles[0]), this.experiences[0], (this.characters[1] || this.roles[1]), this.experiences[1], this.create, this.experiences[2], (this.characters[2] || this.roles[2]), this.login, (this.characters[3] || this.roles[3])]
-            console.log(displayAreas)
-            return displayAreas;
+            var menu = [{
+                text: 'Experiences',
+                image: 'img/gatherlyLogo.png'
+            }, {
+                text: 'Roles',
+                image: 'img/gatherlyLogo.png'
+            }, {
+                text: 'Characters',
+                image: 'img/gatherlyLogo.png'
+            }, {
+                text: 'Gather!',
+                image: 'img/gatherlyLogo.png'
+            }]
+            return menu;
         }
 
         return holder;

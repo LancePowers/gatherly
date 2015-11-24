@@ -7,7 +7,6 @@
         'ngMaterial',
         'ngRoute',
         'app.components',
-        'router',
         'ngMdIcons'
     ]);
 

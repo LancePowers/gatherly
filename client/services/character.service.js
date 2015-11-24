@@ -9,35 +9,31 @@
     characters.$inject = ['router'];
 
     function characters(router) {
+        var set = [];
+        var type = ['disney-character', 'action-hero']
 
-        var characterSets = [{
-            name: 'disney-character',
-            characters: []
-        }, {
-            name: 'action-hero',
-            characters: []
-        }]
-
-        for (var i = 0; i < characterSets.length; i++) {
-            var test = i;
-            var url = '/data/character/' + characterSets[i].name;
-            router.get(url)
-                .then(function (response) {
-                    console.log(characterSets[test].characters);
-
-                    characterSets[test].characters = response.data;
-                    for (var j = 0; j < characterSets[test].characters.length; j++) {
-                        var image = characterSets[test].characters[j].image
-                        characterSets[test].characters[j].image = 'http://localhost:3000/img/characters/' + image;
+        var url = '/data/character/disney-character';
+        var populate = router.get(url)
+            .then(function (response) {
+                response.data.forEach(function (res) {
+                    var character = {
+                        image: '/img/characters/' + res.image,
+                        group: res.group,
+                        world: res.world,
+                        information: res.information,
+                        decision: res.decision,
+                        structure: res.structure
                     }
-
+                    set.push(character);
                 })
-        };
+            });
+
 
         return {
-            characters: characterSets[1].characters
+            set: function (cb) {
+                console.log(set);
+                cb(set);
+            }
         }
-
     };
-
 })()
