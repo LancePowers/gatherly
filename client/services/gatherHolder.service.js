@@ -75,7 +75,7 @@
         // Combines above arrays for use in the gather view ng-repeat
         // Default to roles followed by character selection
 
-        holder.getDisplay = function () {
+        holder.getDisplay = function (cb) {
             var menu = [{
                 text: 'Experiences',
                 image: 'img/gatherlyLogo.png'
@@ -89,7 +89,7 @@
                 text: 'Gather!',
                 image: 'img/gatherlyLogo.png'
             }]
-            return menu;
+            cb(menu);
         }
 
         return holder;

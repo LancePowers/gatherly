@@ -30,8 +30,8 @@
 
 
         return {
-            set: function (cb) {
-                console.log(set);
+            display: function (cb) {
+                console.log(cb);
                 cb(set);
             }
         }

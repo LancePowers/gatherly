@@ -1,0 +1,6 @@
+.phone {
+    background-image: url('../img/phone.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-top: 12%;
+}
