@@ -1,0 +1,34 @@
+
+<div layout layout-fill>
+
+    <div layout="column" layout-align="center center" class="coverImage" layout-fill ng-style="{'background-image':'url(http://img.memecdn.com/the-only-amp-quot-b-amp-quot-word-a-woman-should-be-called-is-amp-quot-beautiful-amp-quot-bitches-love-being-called-amp-quot-beautiful-amp-quot_o_4128175.jpg)', 'background-repeat': 'no-repeat'}">
+
+      <md-content class="md-padding">
+        sample text
+      </md-content>
+      <div layout="row">
+
+        <!-- these are causing, "the cannot read property of 'element' of undefined" error. i think it's cuz somethings screwed up with my inject in the controller -->
+
+        <md-button class="md-fab" aria-label="I'm in">
+            <md-icon md-font-icon="thumb_up" ng-click="sendToGatherHoler()"></md-icon>
+        </md-button>
+        <md-button class="md-fab md-primary" aria-label="No thanks">
+            <md-icon md-svg-src="img/icons/thumb_down.svg"></md-icon>
+        </md-button>
+      </div>
+    </div>
+</div>
+
+
+<!-- <div layout layout-fill> -->
+    <!-- <img ng-src="{{ item.imagesource }}"/> -->
+   <!--  <img ng-src="https://s-media-cache-ak0.pinimg.com/736x/0a/87/3a/0a873a01bb8da61b412feb4219159aa0.jpg"/>
+    <div layout="column" layout-align="center center" class="coverImage" layout-fill>
+        <md-content class="md-padding">
+            Description text here....
+        </md-content>
+        <md-button class="md-raised md-primary">I'm in</md-button>
+        <md-button class="md-raised md-primary">Nah / ehhh, no</md-button>
+    </div>
+</div> -->
