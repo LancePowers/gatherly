@@ -1,12 +1,13 @@
-<div layout="row" class="phone" flex="60">
+<div layout="row" ng-class="vm.fullScreen" flex="60" flex-sm="100">
     <div layout="column" flex="100">
-        <md-content flex-md="45" flex-gt-md="55" flex-lg="60" flex-gt-lg="100" layout-wrap class="phone-content">
+        <md-content flex-md="45" flex-gt-md="65" flex-lg="70" flex-gt-lg="100" layout-wrap class="phone-content">
             <md-toolbar>
                 <div class="md-toolbar-tools">
                     <h2 class="md-flex">Start a Gather</h2>
                 </div>
             </md-toolbar>
-            <grid data-content="home"></grid>
+            <grid ng-show="vm.test" data-content="home"></grid>
+            <grid ng-hide="vm.test" data-content="character"></grid>
         </md-content>
     </div>
 </div>

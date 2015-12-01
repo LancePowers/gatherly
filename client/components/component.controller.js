@@ -3,11 +3,11 @@
     //retrieve components module
     angular.module('app.components')
         .controller('ComponentController', ComponentController)
-    ComponentController.$inject = ['$window']
+    ComponentController.$inject = ['$window', '$scope']
 
-    function ComponentController($window) {
-        var vm = this;
-        vm.mobile = ($window.innerWidth < 720);
-        console.log(vm.mobile)
+    function ComponentController($window, $scope) {
+        $scope.test = "Helailahdaoidna"
+        $scope.mobile = ($window.innerWidth < 720);
+        console.log($scope.mobile)
     };
 })();

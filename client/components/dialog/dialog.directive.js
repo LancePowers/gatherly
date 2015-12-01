@@ -19,6 +19,7 @@
 
     function DialogController($mdDialog) {
         var vm = this;
+        vm.test = "Woohoo"
         vm.hide = function () {
             $mdDialog.hide();
         };

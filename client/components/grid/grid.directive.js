@@ -13,7 +13,7 @@
             controllerAs: 'vm',
             bindToController: true,
             link: function (scope, element, attrs, controller) {
-                //controller.configView(attrs.content);
+                controller.configView(attrs.content);
             }
         }
     }
@@ -55,12 +55,18 @@
                 clickOutsideToClose: true
             })
         }
-
+        vm.configView = function (content) {
+            if (content === 'character') {
+                characters.display(vm.setDisplay);
+            } else {
+                vm.setDisplay(vm.menu);
+            }
+        }
         vm.select = function (ev) {
             characters.display(vm.setDisplay);
             vm.showTabDialog(ev)
         }
-        vm.setDisplay(vm.menu);
+
     };
 
 })();

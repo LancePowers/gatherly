@@ -4,7 +4,7 @@
 
 .phone {
     background-image: url('../../img/phone.png');
-    background-size: 100%;
+    background-size: cover;
     background-repeat: no-repeat;
     padding: 17%;
     padding-top: 8%;

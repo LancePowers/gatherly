@@ -26,12 +26,17 @@
 
     function PhoneController($mdDialog) {
         var vm = this;
+        vm.test = true;
         vm.sizer = function (width) {
             console.log(width);
             if (width > 600) {
-                vm.large = 'phone-content'
-            } else {
-                vm.large = ''
+                vm.fullScreen = 'phone'
+            }
+            //            if (width > 960 && width < 1060) {
+            //                vm.padding = 'pad-left'
+            //            } 
+            else {
+                vm.fullScreen = ''
             }
         }
         vm.size = {
