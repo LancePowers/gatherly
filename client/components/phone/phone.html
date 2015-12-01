@@ -6,8 +6,9 @@
                     <h2 class="md-flex">Start a Gather</h2>
                 </div>
             </md-toolbar>
-            <grid ng-show="vm.test" data-content="home"></grid>
-            <grid ng-hide="vm.test" data-content="character"></grid>
+            <grid ng-show="vm.view.grid" data-content="home"></grid>
+            <view ng-show="vm.view.experience"></view>
+            <experience-form ng-show="vm.view.form"></experience-form>
         </md-content>
     </div>
 </div>

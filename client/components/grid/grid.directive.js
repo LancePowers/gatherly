@@ -19,9 +19,9 @@
     }
 
 
-    GridController.$inject = ['gatherHolder', 'experiences', 'characters', '$mdDialog'];
+    GridController.$inject = ['gatherHolder', 'experiences', 'characters', '$mdDialog', 'views'];
 
-    function GridController(gatherHolder, experiences, characters, $mdDialog) {
+    function GridController(gatherHolder, experiences, characters, $mdDialog, views) {
         var vm = this;
 
 
@@ -63,8 +63,11 @@
             }
         }
         vm.select = function (ev) {
-            characters.display(vm.setDisplay);
-            vm.showTabDialog(ev)
+            views.change();
+            //            if (vm.count = 0) {
+            //                characters.display(vm.setDisplay);
+            //            } else if (vm.count === 1) {}
+            //            vm.showTabDialog(ev)
         }
 
     };

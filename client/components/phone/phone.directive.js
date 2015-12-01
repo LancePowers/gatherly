@@ -22,13 +22,18 @@
     }
 
 
-    PhoneController.$inject = ['$mdDialog'];
+    PhoneController.$inject = ['$mdDialog', 'views'];
 
-    function PhoneController($mdDialog) {
+    function PhoneController($mdDialog, views) {
         var vm = this;
-        vm.test = true;
+
         vm.sizer = function (width) {
             console.log(width);
+            vm.view = views.view;
+            vm.updateView = function (view) {
+                vm.view = view;
+            }
+            views.cbFunction(vm.updateView);
             if (width > 600) {
                 vm.fullScreen = 'phone'
             }

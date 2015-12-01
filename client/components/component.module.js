@@ -5,7 +5,8 @@
         'app.components.dialog',
         'app.components.grid',
         'app.components.experienceForm',
-        'app.components.phone'
+        'app.components.phone',
+        'app.components.experienceView'
     ]);
 
 })();
