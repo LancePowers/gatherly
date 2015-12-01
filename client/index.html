@@ -13,17 +13,17 @@
     <link href="components/gather/gather.css" rel="stylesheet">
     <link href="components/selectGrid/characters.css" rel="stylesheet">
     <link href="components/grid/grid.css" rel="stylesheet">
+    <link href="components/phone/phone.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
 
 </head>
 
 
 <body id="page-top" class="index">
-
-    <div class="phone">
-        <grid data-content="home"></grid>
+    <div ng-controller="ComponentController">
+        <phone ng-if="!vm.mobile"></phone>
+        <grid ng-if="vm.mobile" data-content="home"></grid>
     </div>
-
 
     <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
@@ -40,11 +40,13 @@
     <!-- custom scripts -->
     <script src="app.module.js"></script>
     <script src="components/component.module.js"></script>
-    <script src="components/component.directive.js"></script>
+    <script src="components/component.controller.js"></script>
     <script src="services/character.service.js"></script>
     <script src="services/experience.service.js"></script>
     <script src="services/router.service.js"></script>
     <script src="services/gatherHolder.service.js"></script>
+    <script src="components/phone/phone.module.js"></script>
+    <script src="components/phone/phone.directive.js"></script>
     <script src="components/grid/grid.module.js"></script>
     <script src="components/grid/grid.directive.js"></script>
     <script src="components/dialog/dialog.module.js"></script>

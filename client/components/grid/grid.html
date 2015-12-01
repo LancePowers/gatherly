@@ -1,4 +1,4 @@
-<md-grid-list class="gridListdemoDynamicTiles" ng-class="vm.large" md-cols-sm="2" md-cols-md="2" md-cols-gt-md="2" md-row-height-gt-md="4:3" md-row-height="4:3" md-gutter="8px" md-gutter-gt-sm="4px" flex="{{vm.size.width}}" flex-sm="100">
+<md-grid-list class="gridListdemoDynamicTiles" md-cols-sm="2" md-cols-md="2" md-cols-gt-md="2" md-row-height-gt-md="4:3" md-row-height="4:3" md-gutter="8px" md-gutter-gt-sm="4px" flex="100">
 
     <md-grid-tile ng-repeat="display in vm.displays track by $index" md-rowspan="1" md-colspan="1" md-colspan-sm="1" ng-click="vm.select($index)" ng-style="{'background-image': 'url(' + display.image + ')', 'background-size' : 'cover'}">
         <md-grid-tile-footer>

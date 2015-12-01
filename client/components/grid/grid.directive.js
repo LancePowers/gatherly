@@ -13,11 +13,7 @@
             controllerAs: 'vm',
             bindToController: true,
             link: function (scope, element, attrs, controller) {
-                controller.configView(attrs.content);
-                controller.sizer($window.innerWidth, attrs.content);
-                angular.element($window).on('resize', function () {
-                    controller.sizer($window.innerWidth, attrs.content)
-                });
+                //controller.configView(attrs.content);
             }
         }
     }
@@ -27,11 +23,8 @@
 
     function GridController(gatherHolder, experiences, characters, $mdDialog) {
         var vm = this;
-        vm.test = true;
-        vm.size = {
-            width: 100,
-            offset: 0
-        };
+
+
         vm.menu = [{
             text: 'Experiences',
             image: 'img/gatherlyLogo.png',
@@ -51,26 +44,7 @@
             }];
 
         vm.setDisplay = function (arr) {
-            vm.displays = arr;
-        }
-
-        vm.configView = function (content) {
-            console.log(content)
-            if (content === 'home') {
-                vm.setDisplay(vm.menu);
-                vm.size = {
-                    width: 40,
-                    offset: 10
-                };
-            }
-        }
-        vm.sizer = function (width, view) {
-                console.log(width);
-                if (width > 600) {
-                    vm.large = 'phone-content'
-                } else {
-                    vm.large = ''
-                }
+                vm.displays = arr;
             }
             //experiences.experiences
         vm.showTabDialog = function (ev) {
@@ -86,6 +60,7 @@
             characters.display(vm.setDisplay);
             vm.showTabDialog(ev)
         }
+        vm.setDisplay(vm.menu);
     };
 
 })();
