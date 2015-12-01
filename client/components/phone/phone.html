@@ -3,7 +3,11 @@
         <md-content flex-md="45" flex-gt-md="65" flex-lg="70" flex-gt-lg="100" layout-wrap class="phone-content">
             <md-toolbar>
                 <div class="md-toolbar-tools">
-                    <h2 class="md-flex">Start a Gather</h2>
+                    <h2 class="md-flex">{{vm.title}}</h2>
+                    <md-button class="md-fab md-primary" aria-label="No thanks">
+                        <ng-md-icon icon="clear" ng-click="vm.reset()">
+                        </ng-md-icon>
+                    </md-button>
                 </div>
             </md-toolbar>
             <grid ng-show="vm.view.grid" data-content="home"></grid>

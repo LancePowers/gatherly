@@ -4,7 +4,7 @@
         .directive('view', experienceViewDirective);
 
     function experienceViewDirective() {
-        console.log('in EView directive');
+
         return {
             restrict: 'E',
             templateUrl: 'components/experienceView/experienceView.html',
@@ -14,13 +14,17 @@
             bindToController: true,
         };
     }
-    ExperienceViewController.$inject = ['views'];
+    ExperienceViewController.$inject = ['views', 'experiences'];
 
 
-    function ExperienceViewController(views) {
+    function ExperienceViewController(views, experiences) {
         var vm = this;
+        vm.active = experiences.experiences[0]
+        vm.getActive = function (active) {
+            vm.active = active
+        }
 
-        console.log('please...');
+        experiences.setCb(vm.getActive)
 
         vm.sendToGatherHolder = function () {
             console.log('firing');

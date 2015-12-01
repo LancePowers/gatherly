@@ -26,21 +26,23 @@
 
     function PhoneController($mdDialog, views) {
         var vm = this;
-
+        vm.title = views.title;
+        vm.view = views.view;
+        vm.reset = function () {
+            console.log(views)
+            views.reset();
+        }
+        vm.updateView = function (view, title) {
+            vm.view = view;
+            vm.title = title;
+        }
+        views.cbFunction(vm.updateView);
         vm.sizer = function (width) {
             console.log(width);
-            vm.view = views.view;
-            vm.updateView = function (view) {
-                vm.view = view;
-            }
-            views.cbFunction(vm.updateView);
+
             if (width > 600) {
                 vm.fullScreen = 'phone'
-            }
-            //            if (width > 960 && width < 1060) {
-            //                vm.padding = 'pad-left'
-            //            } 
-            else {
+            } else {
                 vm.fullScreen = ''
             }
         }

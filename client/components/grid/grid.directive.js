@@ -11,10 +11,7 @@
             scope: {},
             controller: GridController,
             controllerAs: 'vm',
-            bindToController: true,
-            link: function (scope, element, attrs, controller) {
-                controller.configView(attrs.content);
-            }
+            bindToController: true
         }
     }
 
@@ -28,46 +25,57 @@
         vm.menu = [{
             text: 'Experiences',
             image: 'img/gatherlyLogo.png',
-            click: function () {}
             }, {
             text: 'Roles',
             image: 'img/gatherlyLogo.png',
-            click: function () {}
             }, {
             text: 'Characters',
             image: 'img/gatherlyLogo.png',
-            click: function () {}
             }, {
             text: 'Gather!',
             image: 'img/gatherlyLogo.png',
-            click: function () {}
             }];
 
+        vm.chooseDisplay = function (index) {
+            switch (index) {
+            case 0:
+                vm.displays = experiences.experiences;
+                break;
+            case 1:
+                vm.displays = roles.roles
+                break;
+            case 2:
+                characters.display(vm.setDisplay)
+                break;
+            }
+        }
+
+        views.createReset(function () {
+            console.log(vm.displays)
+            vm.displays = vm.menu;
+        });
+
         vm.setDisplay = function (arr) {
-                vm.displays = arr;
-            }
-            //experiences.experiences
-        vm.showTabDialog = function (ev) {
-            $mdDialog.show({
-                templateUrl: 'components/dialog/dialog.html',
-                parent: angular.element(vm),
-                targetEvent: ev,
-                clickOutsideToClose: true
-            })
+            vm.displays = arr;
         }
-        vm.configView = function (content) {
-            if (content === 'character') {
-                characters.display(vm.setDisplay);
-            } else {
-                vm.setDisplay(vm.menu);
-            }
-        }
+
+        vm.setDisplay(vm.menu);
+
+        vm.mode = 'menu';
+
+
         vm.select = function (ev) {
-            views.change();
-            //            if (vm.count = 0) {
-            //                characters.display(vm.setDisplay);
-            //            } else if (vm.count === 1) {}
-            //            vm.showTabDialog(ev)
+            if (vm.mode === 'menu') {
+                vm.chooseDisplay(ev);
+                vm.mode = vm.menu[ev].text;
+            } else if (vm.mode === 'Experiences') {
+                experiences.setActive(ev);
+                views.change(ev);
+            } else if (vm.mode === 'Roles') {
+                console.log(ev)
+            } else if (vm.mode === 'Characters') {
+                console.log(ev)
+            };
         }
 
     };

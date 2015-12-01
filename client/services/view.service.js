@@ -10,23 +10,38 @@
 
     function views() {
         var view = {
-            grid: false,
+            grid: true,
             experience: false,
-            form: true
+            form: false,
         }
+        var title = 'Create a Gather!'
         var storedCb;
         var cbFunction = function (cb) {
             storedCb = cb;
         }
-        var change = function () {
+        var reset = 'test';
+        var createReset = function (cb) {
+            console.log(reset);
+            reset = cb;
+        }
+
+        var change = function (index) {
             view.grid = !view.grid;
-            view.experience = !view.experience;
-            storedCb(view);
+            if (index === 0) {
+                view.form = !view.form;
+            } else {
+                view.experience = !view.experience;
+            }
+
+            storedCb(view, title);
         }
         return {
             view: view,
             cbFunction: cbFunction,
-            change: change
+            change: change,
+            title: title,
+            reset: reset,
+            createReset: createReset
         };
 
     };

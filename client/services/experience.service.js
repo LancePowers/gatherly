@@ -8,7 +8,15 @@
 
     function experiences(router) {
         var self = this;
-        var experiences = [];
+        var experiences = [{
+            name: 'NEW',
+            description: 'Create your own experience.',
+            image: 'img/gatherlyLogo.png'
+        }];
+
+
+        var active = experiences[0];
+        var cb;
         //1. Get Experience Function, using route
 
         var populate = router.get("data/experiences")
@@ -25,8 +33,13 @@
                 })
 
             });
-
-
+        var setCb = function (callback) {
+            cb = callback;
+        }
+        var setActive = function (index) {
+            active = experiences[index];
+            cb(active);
+        }
 
         //1. Get Experience Function, using route
         var getImage = function (experience) {
@@ -40,7 +53,10 @@
 
 
         return {
-            experiences: experiences
+            experiences: experiences,
+            setActive: setActive,
+            active: active,
+            setCb: setCb
 
         }
     };

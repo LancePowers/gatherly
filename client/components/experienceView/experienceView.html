@@ -1,9 +1,9 @@
 <div layout layout-fill>
 
-    <div layout="column" layout-align="center center" class="coverImage" layout-fill ng-style="{'background-image':'url(http://img.memecdn.com/the-only-amp-quot-b-amp-quot-word-a-woman-should-be-called-is-amp-quot-beautiful-amp-quot-bitches-love-being-called-amp-quot-beautiful-amp-quot_o_4128175.jpg)', 'background-repeat': 'no-repeat'}">
+    <div layout="column" layout-align="center center" class="coverImage" layout-fill ng-style="{'background-image':'url('+vm.active.image+')', 'background-repeat': 'no-repeat'}">
 
         <md-content class="md-padding">
-            sample text
+            {{vm.active.description}}
         </md-content>
         <div layout="row">
 
